@@ -1,0 +1,9 @@
+# SETUP #
+- Setup 
+npx create-react-app hello-world --template typescript
+npm install --save redux @types/redux
+npm install --save react-redux @types/react-redux
+npm install --save @material-ui/core
+npm install --save @material-ui/icons
+npm i --save lodash
+npm i --save @types/lodash
