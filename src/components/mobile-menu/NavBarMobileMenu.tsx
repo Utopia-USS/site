@@ -7,13 +7,14 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import { navBarSettings } from '../nav-bar/NavBarSettings';
 
-interface Props {
-}
+export interface Props {
+};
 
 const NavBarMobileMenu = (props: Props) => {
     //https://codesandbox.io/s/material-ui-navbar-responsive-lf30l?file=/src/components/Toolbar/Toolbar.js:3359-4693
-    const mobileMenuId = "nav-bar-menu-mobile";
+    const mobileMenuId = navBarSettings.mobileMenuId;
     return (
       <Menu
         // anchorEl={this.state.mobileMoreAnchorEl}

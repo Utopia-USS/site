@@ -9,6 +9,7 @@ interface State {
   previousOffset: number;
   vericalTranslatePx: number;
   heightPx: number;
+  mobileMenuAnchorEl?: EventTarget;
 };
 
 export class NavBar extends React.Component<any, State> {
@@ -34,11 +35,19 @@ export class NavBar extends React.Component<any, State> {
     window.removeEventListener("scroll", this.handleScroll);
   }
 
+  onMobileMenuIconClicked = (event: React.MouseEvent) => {
+    this.setState({mobileMenuAnchorEl: event.target});
+  }
+
 
   render() {
     const {vericalTranslatePx, heightPx} = this.state;
     return (
-      <NavBarView vericalTranslatePx={vericalTranslatePx} height={heightPx} />
+      <NavBarView 
+      vericalTranslatePx={vericalTranslatePx} 
+      height={heightPx} 
+      onMobileMenuIconClicked={this.onMobileMenuIconClicked}
+      />
     );
   }
 }

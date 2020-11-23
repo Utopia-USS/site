@@ -20,11 +20,14 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Grid from '@material-ui/core/Grid/Grid';
 import Button from '@material-ui/core/Button/Button';
 import { FullscreenExit } from '@material-ui/icons';
+import NavBarMobileMenu from '../mobile-menu/NavBarMobileMenu';
+import { isNullOrUndefined } from 'util';
 
 interface Props {
   //children?: React.ReactElement;
   vericalTranslatePx: number;
   height: number;
+  onMobileMenuIconClicked: (event: React.MouseEvent) => void;
 }
 
 export default function NavBarView(props: Props) {
@@ -94,7 +97,6 @@ export default function NavBarView(props: Props) {
       color: theme.palette.secondary.light,
     },
     bigNameColumn: {
-      display: "flex",
       flexDirection: "column",
     },
   }));
@@ -103,19 +105,16 @@ export default function NavBarView(props: Props) {
 
   return (
     <React.Fragment>
-      <div>
-
-      </div>
       <AppBar color="secondary" className={ `${classes.appBar} ${classes.backGoundLayerTop}` } elevation={0} position="fixed">
         <Toolbar className={classes.toolbar}>
           <div>
             <div className={ classes.logoAndNameRow }>
               <Box className={ classes.logoBox } height={height*0.8} width={height*0.8} />
               <div className={ `${classes.sectionDesktop} ${classes.bigNameColumn}`}>
-                <Typography variant="h5"  >UTOPIA</Typography>
+                <Typography variant="h5">UTOPIA</Typography>
                 <Typography variant="subtitle1" className={ classes.minorName } >ULTIMATE SOFTWARE SOLUTIONS</Typography>
               </div>
-              <Typography variant="h5" className={ classes.sectionMobile }>Utopia</Typography>
+              <Typography variant="h5" className={ classes.sectionMobile }>UTOPIA</Typography>
             </div>
           </div>
           <div className={ `${classes.sectionDesktop} ${classes.buttonBox}` }>
@@ -127,10 +126,10 @@ export default function NavBarView(props: Props) {
           </div>
           <div className={ `${classes.sectionMobile} ${classes.buttonBox}`  }>
           <IconButton
-                // aria-label="show more"
-                // aria-controls={mobileMenuId}
-                // aria-haspopup="true"
-                // onClick={this.handleMobileMenuOpen}
+                aria-label="show menu"
+                aria-controls={navBarSettings.mobileMenuId}
+                aria-haspopup="true"
+                onClick={props.onMobileMenuIconClicked}
                 color="inherit"
               >
                 <MoreIcon />
@@ -140,6 +139,9 @@ export default function NavBarView(props: Props) {
       </AppBar>
       <div className={ `${classes.appBar} ${classes.backGoundLayerBottom}` }></div>
       <Toolbar className={classes.distanceBar}/>
+      <NavBarMobileMenu>
+
+      </NavBarMobileMenu>
     </React.Fragment>
   );
 }
