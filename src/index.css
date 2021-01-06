@@ -1,6 +1,22 @@
+@font-face {
+  font-family: myriadpro;
+  src: url("./assets/fonts/myriad-pro/MYRIADPRO-REGULAR.OTF");
+}
+
+@font-face {
+  font-family: myriadpro;
+  src: url("./assets/fonts/myriad-pro/MYRIADPRO-SEMIBOLD.OTF");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: gabriola;
+  src: url("./assets/fonts/gabriola/gabriola.ttf");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: myriadpro, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

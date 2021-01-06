@@ -1,4 +1,3 @@
-import { maxHeaderSize } from "http";
 import React from "react";
 import sleep from "../../utils/sleep";
 import { navBarSettings } from "./NavBarSettings";
@@ -9,7 +8,7 @@ interface State {
   previousOffset: number;
   vericalTranslatePx: number;
   heightPx: number;
-  mobileMenuAnchorEl?: EventTarget;
+  mobileMenuAnchorEl?: Element;
 };
 
 export class NavBar extends React.Component<any, State> {
@@ -36,7 +35,11 @@ export class NavBar extends React.Component<any, State> {
   }
 
   onMobileMenuIconClicked = (event: React.MouseEvent) => {
-    this.setState({mobileMenuAnchorEl: event.target});
+    this.setState({mobileMenuAnchorEl: event.target as Element});
+  }
+
+  onMobileMenuClosed = () => {
+    this.setState({mobileMenuAnchorEl: undefined});
   }
 
 
@@ -47,6 +50,8 @@ export class NavBar extends React.Component<any, State> {
       vericalTranslatePx={vericalTranslatePx} 
       height={heightPx} 
       onMobileMenuIconClicked={this.onMobileMenuIconClicked}
+      mobileMenuAnchorEl={this.state.mobileMenuAnchorEl}
+      onMobileMenuClose={this.onMobileMenuClosed}
       />
     );
   }

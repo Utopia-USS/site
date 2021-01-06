@@ -7,3 +7,5 @@ npm install --save @material-ui/core
 npm install --save @material-ui/icons
 npm i --save lodash
 npm i --save @types/lodash
+npm install --save gh-pages
+npm install eslint-plugin-react-hooks --save-dev
