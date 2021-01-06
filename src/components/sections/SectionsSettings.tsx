@@ -13,7 +13,7 @@ const sections: ReadonlyArray<SectionProps> = [
     ref: createRef<HTMLElement>(),
   },
   {
-    name: "gallery",
+    name: "projects",
     id: "gallery-section",
     ref: createRef<HTMLElement>(),
   },
