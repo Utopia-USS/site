@@ -25,7 +25,7 @@ const SectionTitle = (props: Props) => {
 
   return (
     <div className={classes.titleContainer}>
-      <Typography variant={"h3"} className={classes.title}>{ props.title }</Typography>
+      <Typography variant={"h4"} className={classes.title}>{ props.title }</Typography>
     </div>
   )
 }

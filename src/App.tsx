@@ -5,6 +5,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import { NavBar } from './components/nav-bar/NavBar';
 import OfferSection from './components/sections/offer/OfferSection';
 import GallerySection from './components/sections/gallery/GallerySection';
+import AboutUsSection from './components/sections/about-us/AboutUsSection';
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -23,6 +24,7 @@ function App() {
         <Container className={classes.main}>
           <OfferSection/>
           <GallerySection/>
+          <AboutUsSection/>
           <Box my={2}>
             {[...new Array(40)]
               .map(
