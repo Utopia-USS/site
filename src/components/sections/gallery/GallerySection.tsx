@@ -1,6 +1,8 @@
 import { Card, CardContent, CardMedia, createStyles, Fade, Grid, makeStyles, Typography } from "@material-ui/core";
+import { light } from "@material-ui/core/styles/createPalette";
 import { min } from "lodash";
 import React, { useEffect, useState } from "react";
+import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import sleep from "../../../utils/sleep";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import SectionTitle from "../components/SectionTitle";
@@ -46,19 +48,11 @@ const GallerySection = (props: Props) => {
     });
   }
 
-
   // Updating window dimension info
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
+  const windowDimensions = useWindowDimensions();
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  console.log(windowDimensions.width);
 
-  console.log(min([minHeight, 0.9 * windowDimensions.width * minHeight / (maxWidth * 7/12)]));
   const useStyles = makeStyles((theme) =>
     createStyles({
       galleryBox: {
@@ -105,6 +99,7 @@ const GallerySection = (props: Props) => {
         alignItems: "center",
         height: "100%",
         flexGrow: 1,
+        fontWeight: "lighter",
       },
     })
   );

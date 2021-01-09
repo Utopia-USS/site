@@ -10,6 +10,12 @@
 }
 
 @font-face {
+  font-family: myriadpro;
+  src: url("./assets/fonts/myriad-pro/MyriadPro-Light.otf");
+  font-weight: lighter;
+}
+
+@font-face {
   font-family: gabriola;
   src: url("./assets/fonts/gabriola/gabriola.ttf");
 }

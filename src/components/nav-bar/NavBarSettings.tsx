@@ -11,14 +11,14 @@ const menuItems = () : MenuItem[] =>
   .sections
   .map((e) => {
     return {
-      label: e.name,
+      label: e.menuName,
       scrollToRef: e.ref,
     };
   });
 
 export const navBarSettings = {
   maxHeightPx: 450,
-  minHeightPx: 80,
+  minHeightPx: 60,
   scrollToBarTranslationFactor: 1,
   delayMs: 0,
   logoBreakpoint: 200,

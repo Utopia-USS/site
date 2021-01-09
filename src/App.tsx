@@ -6,6 +6,7 @@ import { NavBar } from './components/nav-bar/NavBar';
 import OfferSection from './components/sections/offer/OfferSection';
 import GallerySection from './components/sections/gallery/GallerySection';
 import AboutUsSection from './components/sections/about-us/AboutUsSection';
+import ContactSection from './components/sections/contact/ContactSection';
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -25,6 +26,7 @@ function App() {
           <OfferSection/>
           <GallerySection/>
           <AboutUsSection/>
+          <ContactSection/>
           <Box my={2}>
             {[...new Array(40)]
               .map(

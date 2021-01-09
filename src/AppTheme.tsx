@@ -6,15 +6,22 @@ export const appThemeInstance = createMuiTheme({
   palette: {
     primary: {
       light: "#bebed5ff",
-      main: "#27273dff",
-      dark: "#00000000"
+      main: "#50507c",
+      dark: "#27273dff",
     },
     secondary: {
       light: "#f0e9e0ff",
       main: "#dec9a8ff",
       dark: "#d1a866ff",
-    }
+    },
+    text: {
+      //primary: "#27273dff",
+    },
   },
+  typography: {
+    fontFamily: "myriadpro",
+    fontSize: 16,
+  }
 });
 
 interface Props {

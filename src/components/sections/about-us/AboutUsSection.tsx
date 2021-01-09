@@ -2,6 +2,7 @@ import { Card, CardContent, CardMedia, createStyles, Fade, Grid, makeStyles, Typ
 import { min } from "lodash";
 import React, { useEffect, useState } from "react";
 import { getWindowDimensions } from "../../../utils/getWindowDimensions";
+import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import sleep from "../../../utils/sleep";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import SectionTitle from "../components/SectionTitle";
@@ -20,15 +21,7 @@ const GallerySection = (props: Props) => {
   const {image, description} = aboutUsSectionSettings;
 
   // Updating window dimension info
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const windowDimensions = useWindowDimensions();
 
   console.log(min([minHeight, 0.9 * windowDimensions.width * minHeight / (maxWidth * 7/12)]));
   const useStyles = makeStyles((theme) =>

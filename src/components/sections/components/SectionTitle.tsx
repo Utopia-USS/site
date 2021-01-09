@@ -9,13 +9,13 @@ interface Props {
 const useStyles = makeStyles((theme) => ({
   title: {
     padding: theme.spacing(6),
-    textTransform: "uppercase",
+    textTransform: "capitalize",
     margin: "0 auto",
     textAlign: "center",
     fontWeight: "bold",
   },
   titleContainer: {
-    borderBottom: `2px dotted ${theme.palette.primary.light}`,
+    borderBottom: `8px dotted ${theme.palette.primary.light}`,
     marginBottom: theme.spacing(6),
   }
 }));
@@ -25,7 +25,7 @@ const SectionTitle = (props: Props) => {
 
   return (
     <div className={classes.titleContainer}>
-      <Typography variant={"h4"} className={classes.title}>{ props.title }</Typography>
+      <Typography variant={"h5"} className={classes.title}>{ props.title }</Typography>
     </div>
   )
 }

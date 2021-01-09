@@ -83,14 +83,9 @@ export default function NavBarView(props: Props) {
       alignSelf: "flex-start",
       paddingTop: navBarSettings.minHeightPx / 2 - 20,
     },
-    minorName: {
-      color: theme.palette.secondary.light,
-    },
-    bigNameColumn: {
-      flexDirection: "column",
-    },
     menuItem: {
       textTransform: "uppercase",
+      color: theme.palette.primary.dark,
     },
   }));
 
@@ -102,7 +97,7 @@ export default function NavBarView(props: Props) {
         <Toolbar className={classes.toolbar}>
           <Box className={ classes.logoBox } height={height*0.7} />
           <div className={ `${classes.sectionDesktop} ${classes.buttonBox}` }>
-          <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+          <ButtonGroup variant="text" color="primary" aria-label="navigate to">
             { 
               navBarSettings.menuItems()
                 .map((e) => (
