@@ -18,11 +18,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   root: {
-    maxWidth: 345,
+    maxWidth: 320,
     border: "none",
     textAlign: "center",
-    marginLeft: "auto",
-    marginRight: "auto",
+
   },
   title: {
     fontFamily: "gabriola",

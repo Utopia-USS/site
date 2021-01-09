@@ -101,6 +101,20 @@ const GallerySection = (props: Props) => {
         flexGrow: 1,
         fontWeight: "lighter",
       },
+      stepperBoxDesktop: {
+        display: "flex",
+        justifyContent: "center",
+        margin: theme.spacing(2),
+        [theme.breakpoints.down("md")]: {
+          display: "none",
+        }
+      },
+      stepperBoxMobile: {
+        display: "none",
+        [theme.breakpoints.down("md")]: {
+          display: "block",
+        }
+      }
     })
   );
 
@@ -109,7 +123,6 @@ const GallerySection = (props: Props) => {
   return (
     <SectionBox sectionId="gallery-section">
       <GrowOnDisplayed>
-        
           <Grid container spacing={0} justify="center" alignItems="stretch" className={classes.galleryBox}>
             <Grid item xs={12} md={5}>
               <div className={classes.nonMediaBox}>
@@ -123,7 +136,7 @@ const GallerySection = (props: Props) => {
                     </Typography>
                   </div>
                 </Fade>
-                <div className="stepperBox">
+                <div className={classes.stepperBoxMobile}>
                   <GallerySelectDots dotNumber={numberOfItems} selected={galleryItem} onChecked={onItemChange}/>
                 </div>
               </div>
@@ -134,6 +147,9 @@ const GallerySection = (props: Props) => {
               </Fade>
             </Grid>
           </Grid>
+          <div className={classes.stepperBoxDesktop}>
+            <GallerySelectDots dotNumber={numberOfItems} selected={galleryItem} onChecked={onItemChange}/>
+          </div>
       </GrowOnDisplayed>
     </SectionBox>
   );

@@ -8,6 +8,7 @@ import SectionTitle from "../components/SectionTitle";
 import SectionBox from "../SectionBox";
 import { sectionsSettings } from "../SectionsSettings";
 import offerSectionSettings from "./OfferSectionSettings";
+import OfferTech from "./OfferTech";
 import OfferTile from "./OfferTile";
 
 interface Props {}
@@ -16,10 +17,10 @@ const OfferSection = (props: Props) => {
 
   return (
     <SectionBox sectionId="offer-section"> 
-      <Grid container spacing={3} justify="space-between" alignItems="stretch">
+      <Grid container spacing={3} justify="center" alignItems="stretch">
         {
           offerSectionSettings.offers.map((e) => 
-            <Grid item xs={12} sm={3}>
+            <Grid item container justify="center" xs={12} sm={4}>
               <GrowOnDisplayed>
                 <OfferTile 
                 title={e.title} 
@@ -31,6 +32,7 @@ const OfferSection = (props: Props) => {
           )
         }
       </Grid>
+      <OfferTech/>
     </SectionBox>
   );
 };

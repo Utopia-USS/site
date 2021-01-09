@@ -78,6 +78,7 @@ const ContactSection = (props: Props) => {
         height: theme.typography.fontSize + 20,
         textDecoration: "none",
         margin: theme.spacing(1),
+        transition: "0.2s",
         "&:hover": {
           borderColor: theme.palette.primary.dark,
           color: theme.palette.primary.dark,
@@ -139,23 +140,24 @@ const ContactSection = (props: Props) => {
         <GrowOnDisplayed>
           <div style={{margin: 50}}>
             <form className={classes.form} noValidate autoComplete="off">
-              {fields.map((e, i) => 
-              <TextField
-              fullWidth
-              variant="outlined"
-              id={`${e.name}`}
-              required={e.required}
-              label={e.label}
-              value={e.value}
-              autoComplete={e.autoComplete}
-              onChange={(c) => onValueChange(c.target.value, i, e.validation)}
-              multiline={e.multiline}
-              rows={e.numOfRows}
-              type={e.type}
-              error={e.error}
-              className={classes.field}
-              />
-              )}
+              {
+                fields.map((e, i) => 
+                <TextField
+                fullWidth
+                variant="outlined"
+                id={`${e.name}`}
+                required={e.required}
+                label={e.label}
+                value={e.value}
+                autoComplete={e.autoComplete}
+                onChange={(c) => onValueChange(c.target.value, i, e.validation)}
+                multiline={e.multiline}
+                rows={e.numOfRows}
+                type={e.type}
+                error={e.error}
+                className={classes.field}
+                />)
+              }
               <Button
               variant="contained"
               color="primary"

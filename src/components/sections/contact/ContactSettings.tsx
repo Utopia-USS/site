@@ -17,21 +17,21 @@ interface UtopianField {
 const form: ReadonlyArray<UtopianField> = [
   {
     name: 'name',
-    required: true,
+    required: false,
     label: "Your Name",
     value: "",
     autoComplete: "given-name",
-    validation: (val: string) => val.length > 0,
+    validation: (val: string) => true,
     multiline: false,
     type: "text",
   },
   {
     name: 'surename',
-    required: true,
+    required: false,
     label: "Your Surename",
     value: "",
     autoComplete: "family-name",
-    validation: (val: string) => val.length > 0,
+    validation: (val: string) => true,
     multiline: false,
     type: "text",
   },
@@ -58,7 +58,7 @@ const form: ReadonlyArray<UtopianField> = [
   {
     name: 'message',
     required: true,
-    label: "Haw can we help?",
+    label: "What can we do for you?",
     value: "",
     validation: (val: string) => val.trim().length > 0,
     multiline: true,
@@ -75,7 +75,7 @@ const contactSettings = {
     // obfuscated contact details
     email: ['t', 'h', 'o', 'm', 'a', 's', '@', 'u', 't', 'o', 'p', 'i', 'a', 'u', 'l', 't', 'i', 'm', 'a', 't', 'e', '.', 'c', 'o', 'm'].join(''),
     phone: ['+', '4', '8', ' ', '7', '8', '7', ' ', '9', '7', '8', ' ', '2', '5', '1'].join(''),
-    description: "My name is Thomas and I'm the COO of Utopia Ultimate Software Solutions. I would love to hear about your ideas and challenges. Together with our team we can figure out how to achieve your bussiness goals and advance your companies development. To get in touch, please use my contact details or the contact form. We're waiting to hear from you!"
+    description: "My name is Thomas and I'm the COO of Utopia Ultimate Software Solutions. I would love to hear about your ideas and challenges. Together with our team we can figure out how to achieve your business goals and advance your companies development. To get in touch, please use my contact details or the contact form. We're waiting to hear from you!"
   }
 }
 
