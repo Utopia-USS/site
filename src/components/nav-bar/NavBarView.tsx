@@ -78,6 +78,7 @@ export default function NavBarView(props: Props) {
     buttonBox: {
       alignSelf: "flex-start",
       paddingTop: navBarSettings.minHeightPx / 2 - 20,
+      pointerEvents: "auto",
     },
     menuItem: {
       textTransform: "uppercase",
@@ -94,6 +95,7 @@ export default function NavBarView(props: Props) {
     },
     bottomLayer: {
       zIndex: 999,
+      padding: "0 4px 0 4px",
     },
     topLayer: {
       zIndex: 1000,
@@ -114,19 +116,19 @@ export default function NavBarView(props: Props) {
           <div className={`${classes.toolbarLayer} ${classes.topLayer}`}>
             <Box className={ classes.logoBox } height={height*0.7} />
             <div className={ `${classes.sectionDesktop} ${classes.buttonBox}` }>
-            <ButtonGroup variant="text" color="primary" aria-label="navigate to">
-              { 
-                navBarSettings.menuItems()
-                  .map((e) => (
-                    <Button 
-                    onClick={(_) => e.scrollToRef.current?.scrollIntoView()}
-                    className={classes.menuItem} 
-                    key={e.label}>
-                      {e.label}
-                    </Button>
-                ))
-              }
-            </ButtonGroup>
+              <ButtonGroup variant="text" color="primary" aria-label="navigate to">
+                { 
+                  navBarSettings.menuItems()
+                    .map((e) => (
+                      <Button 
+                      onClick={(_) => e.scrollToRef.current?.scrollIntoView()}
+                      className={classes.menuItem} 
+                      key={e.label}>
+                        {e.label}
+                      </Button>
+                  ))
+                }
+              </ButtonGroup>
             </div>
             <div className={ `${classes.sectionMobile} ${classes.buttonBox}`  }>
               <IconButton
