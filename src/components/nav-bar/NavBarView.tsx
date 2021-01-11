@@ -21,6 +21,7 @@ import Grid from '@material-ui/core/Grid/Grid';
 import Button from '@material-ui/core/Button/Button';
 import { FullscreenExit } from '@material-ui/icons';
 import NavBarMobileMenu from './NavBarMobileMenu';
+import SexiDotAnime from '../miscelanous/SexiDotAnime';
 
 interface Props {
   //children?: React.ReactElement;
@@ -59,11 +60,6 @@ export default function NavBarView(props: Props) {
     },
     toolbar: {
       height: height,
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-evenly",
-      alignItems: "center", /* align vertical */
-      padding: "0 5vw 0 5vw",
     },
     distanceBar: {
       height: navBarSettings.maxHeightPx,
@@ -87,6 +83,23 @@ export default function NavBarView(props: Props) {
       textTransform: "uppercase",
       color: theme.palette.primary.dark,
     },
+    toolbarLayer: {
+      position: "absolute",
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-evenly",
+      alignItems: "center", /* align vertical */
+    },
+    bottomLayer: {
+      zIndex: 999,
+    },
+    topLayer: {
+      zIndex: 1000,
+      padding: "0 5vw 0 5vw",
+      pointerEvents: "none",
+    },
   }));
 
   const classes = useStyles();
@@ -95,32 +108,37 @@ export default function NavBarView(props: Props) {
     <React.Fragment>
       <AppBar color="secondary" className={ `${classes.appBar}` } elevation={0} position="fixed">
         <Toolbar className={classes.toolbar}>
-          <Box className={ classes.logoBox } height={height*0.7} />
-          <div className={ `${classes.sectionDesktop} ${classes.buttonBox}` }>
-          <ButtonGroup variant="text" color="primary" aria-label="navigate to">
-            { 
-              navBarSettings.menuItems()
-                .map((e) => (
-                  <Button 
-                  onClick={(_) => e.scrollToRef.current?.scrollIntoView()}
-                  className={classes.menuItem} 
-                  key={e.label}>
-                    {e.label}
-                  </Button>
-              ))
-            }
-          </ButtonGroup>
+          <div className={`${classes.toolbarLayer} ${classes.bottomLayer}`}>
+            <SexiDotAnime/>
           </div>
-          <div className={ `${classes.sectionMobile} ${classes.buttonBox}`  }>
-            <IconButton
-                aria-label="show menu"
-                aria-controls={navBarSettings.mobileMenuId}
-                aria-haspopup="true"
-                onClick={onMobileMenuIconClicked}
-                color="inherit"
-              >
-                <MoreIcon />
-            </IconButton>
+          <div className={`${classes.toolbarLayer} ${classes.topLayer}`}>
+            <Box className={ classes.logoBox } height={height*0.7} />
+            <div className={ `${classes.sectionDesktop} ${classes.buttonBox}` }>
+            <ButtonGroup variant="text" color="primary" aria-label="navigate to">
+              { 
+                navBarSettings.menuItems()
+                  .map((e) => (
+                    <Button 
+                    onClick={(_) => e.scrollToRef.current?.scrollIntoView()}
+                    className={classes.menuItem} 
+                    key={e.label}>
+                      {e.label}
+                    </Button>
+                ))
+              }
+            </ButtonGroup>
+            </div>
+            <div className={ `${classes.sectionMobile} ${classes.buttonBox}`  }>
+              <IconButton
+                  aria-label="show menu"
+                  aria-controls={navBarSettings.mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={onMobileMenuIconClicked}
+                  color="inherit"
+                >
+                  <MoreIcon />
+              </IconButton>
+            </div>
           </div>
         </Toolbar>
       </AppBar>

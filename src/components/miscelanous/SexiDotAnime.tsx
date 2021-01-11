@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect, useRef } from "react";
-import {forceCenter, forceCollide, forceManyBody, forceSimulation, forceX, forceY, scaleLinear, select, SimulationNodeDatum} from 'd3';
+import {forceCenter, forceCollide, forceManyBody, forceSimulation, forceX, forceY, pointer, scaleLinear, select, SimulationNodeDatum} from 'd3';
 import { appThemeInstance } from "../../AppTheme";
 import { mean, range } from "lodash";
 
@@ -9,6 +9,9 @@ interface Props {
 }
 
 class Node implements SimulationNodeDatum {
+  fx?: number;
+  fy?: number;
+  gravity?:number;
   constructor (public id: number, public x: number, public y: number, public r: number, public colour: string) {}
 }
 
@@ -20,6 +23,8 @@ interface GenerateNodesParams {
   colours: string[],
 }
 
+const randomFromRange = (n: number) => Math.floor(Math.random() * n);
+
 const generateNodes = ({
   height,
   width,
@@ -30,7 +35,6 @@ const generateNodes = ({
   const area = height * width;
   const averageDotArea = mean(radiuses.map((r) => 3.14*r*r/2));
   const nodeCount = Math.floor(area * coverage / averageDotArea);
-  const randomFromRange = (n: number) => Math.floor(Math.random() * n);
   return range(nodeCount).map((i) => new Node(
     i,
     randomFromRange(width),
@@ -47,10 +51,9 @@ const height = 500;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: width,
-    height: height,
-    border: "solid 1px",
-    backgroundColor: "white",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "inherited",
     //width: "100%",
     //height: "100%",
   },
@@ -64,14 +67,12 @@ const config = {
 
 const SexiDotAnime = (props: Props) => { 
   const classes = useStyles();
+  const root = useRef<SVGSVGElement>(null);
 
-
-  const createAnime = () => {
+  const createAnime = (width: number, height: number) => {
     const svg = select(`#${rootId}`);
 
-    svg.on("mouseover")
-
-    var nodes_data: Node[] =  generateNodes({
+    const nodes: Node[] = generateNodes({
       height: height,
       width: width,
       coverage: config.coverage,
@@ -79,22 +80,49 @@ const SexiDotAnime = (props: Props) => {
       colours: config.colors,
     });
 
+    const bigBall = new Node(
+      nodes.length,
+      Math.floor(width / 2),
+      Math.floor(height / 2),
+      40,
+      "rgba(0,0,0,0)",
+    );
+    bigBall.gravity = -500;
+
+    nodes.push(bigBall);
+
     const simulation = forceSimulation()
-      .nodes(nodes_data)
+      .nodes(nodes)
       .alphaTarget(0.1) // stay hot
-      .velocityDecay(0.05) // low friction
-      .force("x", forceX(width / 2).strength(0.01))
-      .force("y", forceY(height / 2).strength(0.01))
+      .velocityDecay(0.02) // low friction
+      .force("x", forceX(width / 2).strength(width > height ? 0.01 : 0.02))
+      .force("y", forceY(height / 2).strength(width < height ? 0.01 : 0.02))
       .force("charge", forceManyBody().strength(
-        (node, index, data) => -(node as Node).r
-        ))
-      .force("overlapping", forceCollide());
+        (element, _, __) => {
+          const node = element as Node;
+          return node.gravity 
+          ? node.gravity 
+          : -(node.r * node.r / 10);
+        }
+      ))
+      .force("overlapping", forceCollide((node, _, __) => (node as Node).r))
       // .force("gravity", forceCenter())
+
+    const pointed = (event: any) => {
+      const [x, y] = pointer(event);
+      const last = nodes[nodes.length - 1];
+      last.fx = x;
+      last.fy = y;
+    }
+
+    svg
+      .on("touchmove", event => event.preventDefault())
+      .on("pointermove", pointed);
 
     const singleNode = svg.append("g")
       .attr("class", "nodes")
       .selectAll("circle")
-      .data(nodes_data)
+      .data(nodes)
       .enter()
       .append("circle")
       .attr("r", (node) => node.r)
@@ -111,11 +139,16 @@ const SexiDotAnime = (props: Props) => {
   }
 
   useEffect(() => {
-    createAnime();
+    const current = root.current;
+    if(current) {
+      current.innerHTML = '';
+      const {width, height} = current.getClientRects()[0];
+      createAnime(width, height);
+    }
   });
 
   return (
-    <svg id={rootId} className={classes.root}/>
+    <svg id={rootId} className={classes.root} ref={root}/>
   )
 }
 

@@ -24,7 +24,6 @@ function App() {
         <CssBaseline />
         <NavBar/>
         <Container className={classes.main}>
-          <SexiDotAnime/>
           <OfferSection/>
           <GallerySection/>
           <AboutUsSection/>
