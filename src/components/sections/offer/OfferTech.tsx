@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles, Tooltip, Typography, withStyles } from "@material-ui/core";
 import React, { FC, FunctionComponent, SVGProps } from "react";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import offerSectionSettings from "./OfferSectionSettings";
@@ -49,6 +49,15 @@ const TechIcon : FC<TechIconProps> = (props) => {
   )
 }
 
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.primary.light,
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: `1px solid ${theme.palette.primary.dark}`,
+  },
+}))(Tooltip);
+
 const OfferTech = (props: Props) => {
   const {techs} = offerSectionSettings;
 
@@ -73,9 +82,20 @@ const OfferTech = (props: Props) => {
         {
           techs.map((e) => 
             <Grid item xs={3} sm={2} md={1} className={classes.gridItem}>
-              <TechIcon>
-                <e.icon/>
-              </TechIcon>
+              <HtmlTooltip
+                title={
+                  <div>
+                    <Typography color="inherit">{e.name}</Typography>
+                    {e.description}
+                  </div>
+                }
+              >
+                <div>
+                  <TechIcon>
+                    <e.icon/>
+                  </TechIcon>
+                </div>
+              </HtmlTooltip>
             </Grid>
           )
         }

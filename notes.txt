@@ -10,3 +10,5 @@ npm i --save @types/lodash
 npm install --save gh-pages
 npm install eslint-plugin-react-hooks --save-dev
 npm install --save jss-plugin-nested
+npm install d3 --save
+npm i --save @types/d3

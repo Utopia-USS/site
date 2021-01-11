@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, CardMedia, createStyles, Fade, FilledInput, FormControl, FormHelperText, Grid, Icon, Input, InputLabel, makeStyles, OutlinedInput, TextField, Typography } from "@material-ui/core";
-import { min } from "lodash";
+import { min, throttle } from "lodash";
 import { stringify } from "querystring";
 import React, { RefObject, useEffect, useState } from "react";
 import { getWindowDimensions } from "../../../utils/getWindowDimensions";
@@ -24,7 +24,7 @@ const ContactSection = (props: Props) => {
   const [fields, setFormValues] = useState(contactSettings.form);
 
   // obfuscating contact info
-  const [displayed, element] = useHasBeenDisplayed<HTMLDivElement>();
+  const [displayed, element] = useHasBeenDisplayed<HTMLDivElement>(0, 0);
 
   const onValueChange = (
     val: string, index: number, validator: (val: string) => boolean) => {

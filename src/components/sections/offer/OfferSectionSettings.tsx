@@ -13,49 +13,60 @@ import { FunctionComponent, ReactComponentElement, ReactSVGElement, SVGProps } f
 
 interface Tech {
   icon: FunctionComponent<SVGProps<SVGSVGElement>>,
+  name: string,
   description: string,
 }
 
 const techs: ReadonlyArray<Tech> = [
   {
     icon: FlutterIco,
-    description: "alala",
+    name: "flutter",
+    description: "A cross-platform framework in Dart language allows to quickly build reusable client apps with native performance.",
   },
   {
     icon: ReactIco,
-    description: "alala",
+    name: "react",
+    description: "React.js allows to build fast, composable web apps. React Native allows the same for mobile platforms.",
   },
   {
     icon: AngularIco,
-    description: "alala",
+    name: "angular",
+    description: "Angular allows to build fast, composable web apps.",
   },
   {
     icon: AndroidIco,
-    description: "alala",
+    name: "android",
+    description: "Native Android apps are best suited for long-term, heavy duty projects.",
   },
   {
     icon: TypescriptIco,
-    description: "alala",
+    name: "typescript",
+    description: "We are using Typescript language to ensure type safety and minimize the chances for runtime errors.",
   },
   {
     icon: SpringIco,
-    description: "alala",
+    name: "spring",
+    description: "A well-established, feature rich framework for backends in Java or Kotlin language.",
   },
   {
     icon: KtorIco,
-    description: "alala",
+    name: "ktor",
+    description: "A framework for building asynchronous servers and clients in connected systems using the Kotlin programming language.",
   },
   {
     icon: DotnetIco,
-    description: "alala",
+    name: ".net web api",
+    description: "A well-established, feature rich framework for building APIs in C# language.",
   },
   {
     icon: ExpressjsIco,
-    description: "alala",
+    name: "express.js",
+    description: "A performant web framework for Node.js allowing a high degree of development integration with javascript frontends.",
   },
   {
     icon: DjangoIco,
-    description: "alala",
+    name: "django",
+    description: "A framework in Python that allows quick prototyping and development of web server applications.",
   },
 ]
 
