@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
-import React, { useEffect, useRef } from "react";
-import {forceCenter, forceCollide, forceManyBody, forceSimulation, forceX, forceY, pointer, scaleLinear, select, SimulationNodeDatum} from 'd3';
+import React, { useEffect, useRef, useState } from "react";
+import {color, forceCenter, forceCollide, forceManyBody, forceSimulation, forceX, forceY, pointer, scaleLinear, select, SimulationNodeDatum} from 'd3';
 import { appThemeInstance } from "../../AppTheme";
 import { mean, range } from "lodash";
 
@@ -12,7 +12,7 @@ class Node implements SimulationNodeDatum {
   fx?: number;
   fy?: number;
   gravity?:number;
-  constructor (public id: number, public x: number, public y: number, public r: number, public colour: string) {}
+  constructor (public id: number, public x: number, public y: number, public r: number, public color: string) {}
 }
 
 interface GenerateNodesParams {
@@ -67,10 +67,12 @@ const config = {
 
 const SexiDotAnime = (props: Props) => { 
   const classes = useStyles();
-  const root = useRef<SVGSVGElement>(null);
+  const root = useRef<HTMLCanvasElement>(null);
+
+  const [isSimulation, setIsSimultaion] = useState(false);
 
   const createAnime = (width: number, height: number) => {
-    const svg = select(`#${rootId}`);
+    const canvas = select<HTMLCanvasElement, {}>(`#${rootId}`);
 
     const nodes: Node[] = generateNodes({
       height: height,
@@ -115,24 +117,25 @@ const SexiDotAnime = (props: Props) => {
       last.fy = y;
     }
 
-    svg
+    canvas
       .on("touchmove", event => event.preventDefault())
       .on("pointermove", pointed);
 
-    const singleNode = svg.append("g")
-      .attr("class", "nodes")
-      .selectAll("circle")
-      .data(nodes)
-      .enter()
-      .append("circle")
-      .attr("r", (node) => node.r)
-      .attr("fill", (node) => node.colour);
-
     function tickActions() {
-      //update circle positions to reflect node updates on each tick of the simulation 
-      singleNode
-          .attr("cx", function(d) { return d.x; })
-          .attr("cy", function(d) { return d.y; })
+      const context = canvas.node()?.getContext('2d');
+      const canvasNode = canvas.node();
+      if(context) {
+        context.clearRect(0, 0, width, height);
+        context.save();
+        //context.translate(width / 2, height / 2);
+        for (const d of nodes) {
+          context.beginPath();
+          context.moveTo(d.x + d.r, d.y);
+          context.arc(d.x, d.y, d.r, 0, 2 * Math.PI);
+          context.fillStyle = d.color;
+          context.fill();
+        }
+      }
     }
 
     simulation.on("tick", tickActions );
@@ -141,14 +144,19 @@ const SexiDotAnime = (props: Props) => {
   useEffect(() => {
     const current = root.current;
     if(current) {
-      current.innerHTML = '';
       const {width, height} = current.getClientRects()[0];
-      createAnime(width, height);
+      current.width = width;
+      current.height = height;
+
+      if(!isSimulation) {
+        createAnime(width, height);
+        setIsSimultaion(true);
+      }
     }
   });
 
   return (
-    <svg id={rootId} className={classes.root} ref={root}/>
+    <canvas id={rootId} className={classes.root} ref={root}/>
   )
 }
 
