@@ -113,17 +113,21 @@ const SexiDotAnime = (props: Props) => {
       .on("pointermove", pointed);
 
     function tickActions() {
-      const context = canvas.node()?.getContext('2d');
-      if(context) {
-        context.clearRect(0, 0, width, height);
-        context.save();
-        //context.translate(width / 2, height / 2);
-        for (const d of nodes) {
-          context.beginPath();
-          context.moveTo(d.x + d.r, d.y);
-          context.arc(d.x, d.y, d.r, 0, 2 * Math.PI);
-          context.fillStyle = d.color;
-          context.fill();
+      const node = canvas.node();
+      if(node) {
+        const context = node.getContext('2d');
+        const {width, height} = node.getClientRects()[0]
+        if(context) {
+          context.clearRect(0, 0, width, height);
+          context.save();
+          //context.translate(width / 2, height / 2);
+          for (const d of nodes) {
+            context.beginPath();
+            context.moveTo(d.x + d.r, d.y);
+            context.arc(d.x, d.y, d.r, 0, 2 * Math.PI);
+            context.fillStyle = d.color;
+            context.fill();
+          }
         }
       }
     }
