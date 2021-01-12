@@ -1,8 +1,9 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect, useRef, useState } from "react";
 import {color, forceCenter, forceCollide, forceManyBody, forceSimulation, forceX, forceY, pointer, scaleLinear, select, SimulationNodeDatum} from 'd3';
-import { appThemeInstance } from "../../AppTheme";
+import { appThemeInstance } from "../../../AppTheme";
 import { mean, range } from "lodash";
+import DotAnimeSettings from "./DotAnimeSettings";
 
 interface Props {
 
@@ -35,6 +36,7 @@ const generateNodes = ({
   const area = height * width;
   const averageDotArea = mean(radiuses.map((r) => 3.14*r*r/2));
   const nodeCount = Math.floor(area * coverage / averageDotArea);
+  console.log(nodeCount);
   return range(nodeCount).map((i) => new Node(
     i,
     randomFromRange(width),
@@ -46,24 +48,13 @@ const generateNodes = ({
 
 const rootId = "sexiDotAnimeId";
 
-const width = 500;
-const height = 500;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     height: "100%",
-    backgroundColor: "inherited",
-    //width: "100%",
-    //height: "100%",
   },
 }));
 
-const config = {
-  radiuses: [10, 15],
-  colors: [appThemeInstance.palette.primary.light, appThemeInstance.palette.secondary.light],
-  coverage: 0.1,
-}
 
 const SexiDotAnime = (props: Props) => { 
   const classes = useStyles();
@@ -77,9 +68,9 @@ const SexiDotAnime = (props: Props) => {
     const nodes: Node[] = generateNodes({
       height: height,
       width: width,
-      coverage: config.coverage,
-      radiuses: config.radiuses,
-      colours: config.colors,
+      coverage: DotAnimeSettings.coverage,
+      radiuses: DotAnimeSettings.radiuses,
+      colours: DotAnimeSettings.colors,
     });
 
     const bigBall = new Node(
@@ -123,7 +114,6 @@ const SexiDotAnime = (props: Props) => {
 
     function tickActions() {
       const context = canvas.node()?.getContext('2d');
-      const canvasNode = canvas.node();
       if(context) {
         context.clearRect(0, 0, width, height);
         context.save();
@@ -141,18 +131,29 @@ const SexiDotAnime = (props: Props) => {
     simulation.on("tick", tickActions );
   }
 
-  useEffect(() => {
+  const sizeCanvas = (): {width: number, height: number} | null => {
     const current = root.current;
     if(current) {
       const {width, height} = current.getClientRects()[0];
       current.width = width;
       current.height = height;
-
-      if(!isSimulation) {
-        createAnime(width, height);
-        setIsSimultaion(true);
-      }
+      return {width: width, height: height};
+    } else {
+      return null;
     }
+  }
+
+  useEffect(() => {
+    const dimensions = sizeCanvas();
+    if(!isSimulation && dimensions) {
+      createAnime(dimensions.width, dimensions.height);
+      setIsSimultaion(true);
+    }
+  }, [isSimulation]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", sizeCanvas);
+    return () => window.removeEventListener("resize", sizeCanvas);
   });
 
   return (

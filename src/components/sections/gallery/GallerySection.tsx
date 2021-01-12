@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import sleep from "../../../utils/sleep";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionTitle from "../components/SectionTitle";
 import offerSectionSettings from "../offer/OfferSectionSettings";
 import SectionBox from "../SectionBox";
 import { sectionsSettings } from "../SectionsSettings";
@@ -51,19 +50,18 @@ const GallerySection = (props: Props) => {
   // Updating window dimension info
   const windowDimensions = useWindowDimensions();
 
-  console.log(windowDimensions.width);
-
   const useStyles = makeStyles((theme) =>
     createStyles({
       galleryBox: {
         textAlign: "center",
         backgroundColor: "white",
         width: "90%",
+        height: minHeight,
         maxWidth: maxWidth,
-        minHeight: minHeight,
         marginLeft: "auto",
         marginRight: "auto",
         borderRadius: borderRadius,
+        border: `1px solid ${theme.palette.secondary.main}`,
       },
       title: {
         fontFamily: "gabriola",

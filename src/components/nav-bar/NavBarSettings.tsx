@@ -17,7 +17,6 @@ const menuItems = () : MenuItem[] =>
   });
 
 export const navBarSettings = {
-  maxHeightPx: 450,
   minHeightPx: 60,
   scrollToBarTranslationFactor: 1,
   delayMs: 0,

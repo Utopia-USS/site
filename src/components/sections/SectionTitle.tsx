@@ -8,16 +8,17 @@ interface Props {
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    padding: theme.spacing(6),
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(6),
     textTransform: "capitalize",
     margin: "0 auto",
     textAlign: "center",
-    fontWeight: "bold",
+    fontWeight: "normal",
   },
   titleContainer: {
-    borderBottom: `8px dotted ${theme.palette.primary.light}`,
-    marginBottom: theme.spacing(6),
-  }
+    width: "100%",
+    border: "none",
+  },
 }));
 
 const SectionTitle = (props: Props) => { 

@@ -1,68 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import sleep from "../../utils/sleep";
 import { navBarSettings } from "./NavBarSettings";
 import NavBarView from "./NavBarView";
 import _ from 'lodash';
+import { getWindowDimensions } from "../../utils/getWindowDimensions";
+
+interface Props {}
 
 interface State {
   previousOffset: number;
   vericalTranslatePx: number;
   heightPx: number;
   mobileMenuAnchorEl?: Element;
+  maxHeight: number;
 };
 
-export class NavBar extends React.Component<any, State> {
-  readonly state: State = {
+export function NavBar(props: Props) {
+
+  const [state, setState] = useState<State>({
     previousOffset: 0,
     vericalTranslatePx: 0,
-    heightPx: navBarSettings.maxHeightPx,
-  }
+    heightPx: getWindowDimensions().height,
+    maxHeight: getWindowDimensions().height,
+  });
 
-  handleScroll = () => {
+  const handleScroll = () => {
     const offset = document.documentElement.scrollTop;
-    const newState = onScrollOffset(offset, this.state);
-    const setState = () => this.setState(newState);
+    const newState = onScrollOffset(offset, state);
+    const setstate = (): void => setState(newState);
     const {delayMs} = navBarSettings;
-    delayMs === 0 ? setState() : delay(delayMs, setState);
+    delayMs === 0 ? setstate() : delay(delayMs, setstate);
   };
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
+  const handleResize = () => {
+    const updatedState = {...state, maxHeight: getWindowDimensions().height};
+    const recalculatedState = onScrollOffset(updatedState.previousOffset, updatedState);
+    setState(recalculatedState);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
 
-  onMobileMenuIconClicked = (event: React.MouseEvent) => {
-    this.setState({mobileMenuAnchorEl: event.target as Element});
-  }
+  const onMobileMenuIconClicked = (event: React.MouseEvent) => 
+    setState({...state, mobileMenuAnchorEl: event.target as Element});
 
-  onMobileMenuClosed = () => {
-    this.setState({mobileMenuAnchorEl: undefined});
-  }
+  const onMobileMenuClosed = () =>
+    setState({...state, mobileMenuAnchorEl: undefined});
 
-
-  render() {
-    const {vericalTranslatePx, heightPx} = this.state;
-    return (
-      <NavBarView 
-      vericalTranslatePx={vericalTranslatePx} 
-      height={heightPx} 
-      onMobileMenuIconClicked={this.onMobileMenuIconClicked}
-      mobileMenuAnchorEl={this.state.mobileMenuAnchorEl}
-      onMobileMenuClose={this.onMobileMenuClosed}
-      />
-    );
-  }
+  const {vericalTranslatePx, heightPx, maxHeight} = state;
+  return (
+    <NavBarView 
+    vericalTranslatePx={vericalTranslatePx} 
+    height={heightPx}
+    maxHeight={maxHeight}
+    onMobileMenuIconClicked={onMobileMenuIconClicked}
+    mobileMenuAnchorEl={state.mobileMenuAnchorEl}
+    onMobileMenuClose={onMobileMenuClosed}
+    />
+  );
+  
 }
 
 function onScrollOffset(offset: number, oldState: State): State {
   // Shrinking phase
-  if(offset < shrinkingPhaseOffset()) 
+  if(offset < shrinkingPhaseOffset(oldState.maxHeight)) 
   {
     return {
-      heightPx: navBarSettings.maxHeightPx - offset / navBarSettings.scrollToBarTranslationFactor,
+      ...oldState,
+      heightPx: oldState.maxHeight - offset / navBarSettings.scrollToBarTranslationFactor,
       previousOffset: offset,
       vericalTranslatePx: 0,
     };
@@ -72,6 +84,7 @@ function onScrollOffset(offset: number, oldState: State): State {
     const oldTranslate = oldState.vericalTranslatePx;
     const oldScrollOffset = oldState.previousOffset;
     return {
+      ...oldState,
       heightPx: navBarSettings.minHeightPx,
       previousOffset: offset,
       vericalTranslatePx: Math.max(
@@ -81,8 +94,8 @@ function onScrollOffset(offset: number, oldState: State): State {
   }
 }
 
-function shrinkingPhaseOffset(): number {
-  return (navBarSettings.maxHeightPx - navBarSettings.minHeightPx)
+function shrinkingPhaseOffset(maxHeight: number): number {
+  return (maxHeight - navBarSettings.minHeightPx)
       * navBarSettings.scrollToBarTranslationFactor;
 }
 

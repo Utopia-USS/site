@@ -7,7 +7,7 @@ import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import sleep from "../../../utils/sleep";
 import validateEmail from "../../../utils/validateEmail";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionTitle from "../components/SectionTitle";
+import SectionTitle from "../SectionTitle";
 import offerSectionSettings from "../offer/OfferSectionSettings";
 import SectionBox from "../SectionBox";
 import { sectionsSettings } from "../SectionsSettings";

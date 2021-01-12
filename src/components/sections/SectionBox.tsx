@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React, { FC } from "react";
-import SectionTitle from "./components/SectionTitle";
+import SectionTitle from "./SectionTitle";
 import { sectionsSettings } from "./SectionsSettings";
 
 interface Props {
@@ -10,6 +10,15 @@ interface Props {
 const useStyles = makeStyles((theme) => ({
   section: {
     paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    width: "100%",
+    border: "none",
+    boxShadow: `inset 0 -2px 3px ${theme.palette.secondary.main}`,
+  },
+  sectionBody: {
+    maxWidth: "1200px",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 }));
 
@@ -22,7 +31,9 @@ const GallerySection : FC<Props> = (props) => {
   return (
     <section id={section.id} ref={section.ref} className={classes.section}>
       <SectionTitle title={section.name}/>
-      {props.children}
+      <div className={classes.sectionBody}>
+        {props.children}
+      </div>
     </section>
   );
 };

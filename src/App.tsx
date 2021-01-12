@@ -7,31 +7,20 @@ import OfferSection from './components/sections/offer/OfferSection';
 import GallerySection from './components/sections/gallery/GallerySection';
 import AboutUsSection from './components/sections/about-us/AboutUsSection';
 import ContactSection from './components/sections/contact/ContactSection';
-import SexiDotAnime from './components/miscelanous/SexiDotAnime';
-
-const useStyles = makeStyles((theme) => ({
-  main: {
-    maxWidth: "1200px",
-  },
-}));
+import SexiDotAnime from './components/miscelanous/sexi-dot-anime/SexiDotAnime';
 
 function App() {
-  const classes = useStyles();
+
   return (
-    <React.Fragment>
-      <AppTheme>
-        <React.Fragment>
-        <CssBaseline />
+    <AppTheme>
+      <React.Fragment>
         <NavBar/>
-        <Container className={classes.main}>
-          <OfferSection/>
-          <GallerySection/>
-          <AboutUsSection/>
-          <ContactSection/>
-        </Container>
-        </React.Fragment>
-      </AppTheme>
-    </React.Fragment>
+        <OfferSection/>
+        <GallerySection/>
+        <AboutUsSection/>
+        <ContactSection/>
+      </React.Fragment>
+    </AppTheme>
   );
 }
 

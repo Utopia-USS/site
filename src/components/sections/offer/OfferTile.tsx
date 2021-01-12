@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     maxWidth: 320,
-    border: "none",
+    border: `1px solid ${theme.palette.secondary.main}`,
     textAlign: "center",
-
+    height: "100%",
   },
   title: {
     fontFamily: "gabriola",
@@ -34,12 +34,11 @@ const OfferTile : FC<Props> = (props) => {
   const {title, description, image, imageAlt} = props;
   const classes = useStyles();
   return (
-    <Card variant="outlined" className={classes.root} style={{ height: "100%" }}>
+    <Card variant="outlined" className={classes.root}>
       <CardActionArea>
         <CardMedia
           component="img"
           alt={imageAlt}
-          height="140"
           image={image}
           title={imageAlt}
         />

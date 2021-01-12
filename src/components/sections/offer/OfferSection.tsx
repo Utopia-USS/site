@@ -4,7 +4,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
 import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionTitle from "../components/SectionTitle";
+import SectionTitle from "../SectionTitle";
 import SectionBox from "../SectionBox";
 import { sectionsSettings } from "../SectionsSettings";
 import offerSectionSettings from "./OfferSectionSettings";

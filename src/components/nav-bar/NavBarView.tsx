@@ -21,12 +21,13 @@ import Grid from '@material-ui/core/Grid/Grid';
 import Button from '@material-ui/core/Button/Button';
 import { FullscreenExit } from '@material-ui/icons';
 import NavBarMobileMenu from './NavBarMobileMenu';
-import SexiDotAnime from '../miscelanous/SexiDotAnime';
+import SexiDotAnime from '../miscelanous/sexi-dot-anime/SexiDotAnime';
 
 interface Props {
   //children?: React.ReactElement;
   vericalTranslatePx: number;
   height: number;
+  maxHeight: number;
   onMobileMenuIconClicked: (event: React.MouseEvent) => void;
   mobileMenuAnchorEl?: Element;
   onMobileMenuClose: () => void;
@@ -34,7 +35,7 @@ interface Props {
 
 export default function NavBarView(props: Props) {
 
-  const { vericalTranslatePx, height, onMobileMenuIconClicked, mobileMenuAnchorEl, onMobileMenuClose } = props;
+  const { vericalTranslatePx, height, maxHeight, onMobileMenuIconClicked, mobileMenuAnchorEl, onMobileMenuClose } = props;
 
   const useStyles = makeStyles((theme) => ({
     grow: {
@@ -56,13 +57,17 @@ export default function NavBarView(props: Props) {
       transform: `translate3d(0,${vericalTranslatePx}px,0)`,
       overflowAnchor: "none",
       backgroundColor: "white",
-      boxShadow: "inset 0 -1px 1px rgba(0,0,0,0.5)",
+      boxShadow: `inset 0 -2px 3px ${theme.palette.secondary.main}`,
+      padding: 0,
+      margin: 0,
     },
     toolbar: {
       height: height,
+      padding: 0,
+      margin: 0,
     },
     distanceBar: {
-      height: navBarSettings.maxHeightPx,
+      height: maxHeight,
     },
     logoBox: {
       backgroundImage: `url(${height > navBarSettings.logoBreakpoint ? Logo : LogoThin})`,
@@ -95,7 +100,6 @@ export default function NavBarView(props: Props) {
     },
     bottomLayer: {
       zIndex: 999,
-      padding: "0 4px 0 4px",
     },
     topLayer: {
       zIndex: 1000,

@@ -5,7 +5,7 @@ import { getWindowDimensions } from "../../../utils/getWindowDimensions";
 import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import sleep from "../../../utils/sleep";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionTitle from "../components/SectionTitle";
+import SectionTitle from "../SectionTitle";
 import offerSectionSettings from "../offer/OfferSectionSettings";
 import SectionBox from "../SectionBox";
 import { sectionsSettings } from "../SectionsSettings";
@@ -23,7 +23,6 @@ const GallerySection = (props: Props) => {
   // Updating window dimension info
   const windowDimensions = useWindowDimensions();
 
-  console.log(min([minHeight, 0.9 * windowDimensions.width * minHeight / (maxWidth * 7/12)]));
   const useStyles = makeStyles((theme) =>
     createStyles({
       galleryBox: {
