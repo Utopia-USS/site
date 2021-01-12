@@ -58,6 +58,10 @@ const GallerySection = (props: Props) => {
         width: "90%",
         minHeight: minHeight,
         maxWidth: maxWidth,
+        height: minHeight,
+        [theme.breakpoints.down("sm")]: {
+          height: "auto",
+        },
         marginLeft: "auto",
         marginRight: "auto",
         borderRadius: borderRadius,
@@ -79,7 +83,7 @@ const GallerySection = (props: Props) => {
         width: "100%",
         minHeight: min([minHeight, 0.9 * windowDimensions.width * minHeight / (maxWidth * 7/12)]),
         borderRadius: `0 ${borderRadius}px ${borderRadius}px 0`,
-        [theme.breakpoints.down("md")]: {
+        [theme.breakpoints.down("sm")]: {
           borderRadius: `0 0 ${borderRadius}px ${borderRadius}px`,
         }
       },
@@ -104,13 +108,13 @@ const GallerySection = (props: Props) => {
         display: "flex",
         justifyContent: "center",
         margin: theme.spacing(2),
-        [theme.breakpoints.down("md")]: {
+        [theme.breakpoints.down("sm")]: {
           display: "none",
         }
       },
       stepperBoxMobile: {
         display: "none",
-        [theme.breakpoints.down("md")]: {
+        [theme.breakpoints.down("sm")]: {
           display: "block",
         }
       }
