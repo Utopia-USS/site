@@ -152,8 +152,13 @@ const SexiDotAnime = (props: Props) => {
   }, [isSimulation]);
 
   useEffect(() => {
-    window.addEventListener("scroll", sizeCanvas);
+    window.addEventListener("resize", sizeCanvas);
     return () => window.removeEventListener("resize", sizeCanvas);
+  });
+
+  useEffect(() => {
+    window.addEventListener("scroll", sizeCanvas);
+    return () => window.removeEventListener("scroll", sizeCanvas);
   });
 
   return (

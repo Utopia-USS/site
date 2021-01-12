@@ -58,13 +58,11 @@ export default function NavBarView(props: Props) {
       overflowAnchor: "none",
       backgroundColor: "white",
       boxShadow: `inset 0 -2px 3px ${theme.palette.secondary.main}`,
-      padding: 0,
-      margin: 0,
     },
     toolbar: {
       height: height,
       padding: 0,
-      margin: 0,
+      margin: 1,
     },
     distanceBar: {
       height: maxHeight,
@@ -76,7 +74,7 @@ export default function NavBarView(props: Props) {
       // },
       backgroundSize: "contain",
       backgroundRepeat: 'no-repeat',
-      marginRight: theme.spacing(4),
+      margin: theme.spacing(4),
       flexGrow: 1,
       backgroundPosition: "left center",
     },
@@ -99,11 +97,10 @@ export default function NavBarView(props: Props) {
       alignItems: "center", /* align vertical */
     },
     bottomLayer: {
-      zIndex: 999,
+      zIndex: 100,
     },
     topLayer: {
-      zIndex: 1000,
-      padding: "0 5vw 0 5vw",
+      zIndex: 101,
       pointerEvents: "none",
     },
   }));
