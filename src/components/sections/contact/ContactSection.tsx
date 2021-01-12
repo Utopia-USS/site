@@ -45,6 +45,7 @@ const ContactSection = (props: Props) => {
       },
       contactPersonBox: {
         margin: "auto",
+        padding: theme.spacing(1),
       },
       imageBox: {
         float: "left",

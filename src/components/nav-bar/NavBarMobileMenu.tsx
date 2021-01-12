@@ -26,6 +26,12 @@ const NavBarMobileMenu = (props: Props) => {
     //https://codesandbox.io/s/material-ui-navbar-responsive-lf30l?file=/src/components/Toolbar/Toolbar.js:3359-4693
     const mobileMenuId = navBarSettings.mobileMenuId;
     const isMobileMenuOpen = Boolean(props.mobileMenuAnchorEl);
+
+    const onItemClick = (item: HTMLElement | null) => {
+      item?.scrollIntoView();
+      props.onClose();
+    }
+
     return (
       <Menu
         anchorEl={props.mobileMenuAnchorEl}
@@ -40,7 +46,7 @@ const NavBarMobileMenu = (props: Props) => {
         {
           navBarSettings.menuItems().map((e) => (
             <MenuItem 
-            onClick={(_) => e.scrollToRef.current?.scrollIntoView()}
+            onClick={(_) => onItemClick(e.scrollToRef.current)}
             className={classes.menuItem} 
             key={e.label}>
               <p>{e.label}</p>

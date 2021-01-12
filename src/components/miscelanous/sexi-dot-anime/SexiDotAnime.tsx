@@ -88,8 +88,8 @@ const SexiDotAnime = (props: Props) => {
       .nodes(nodes)
       .alphaTarget(0.1) // stay hot
       .velocityDecay(0.02) // low friction
-      .force("x", forceX(width / 2).strength(width > height ? 0.01 : 0.02))
-      .force("y", forceY(height / 2).strength(width < height ? 0.01 : 0.02))
+      .force("x", forceX(width * 0.5).strength(width > height ? 0.01 : 0.02))
+      .force("y", forceY(height * 0.6).strength(width < height ? 0.01 : 0.02))
       .force("charge", forceManyBody().strength(
         (element, _, __) => {
           const node = element as Node;
@@ -109,7 +109,7 @@ const SexiDotAnime = (props: Props) => {
     }
 
     canvas
-      .on("touchmove", event => event.preventDefault())
+      .on("touchmove", event => null)//event.preventDefault())
       .on("pointermove", pointed);
 
     function tickActions() {

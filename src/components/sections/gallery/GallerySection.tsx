@@ -56,7 +56,7 @@ const GallerySection = (props: Props) => {
         textAlign: "center",
         backgroundColor: "white",
         width: "90%",
-        height: minHeight,
+        minHeight: minHeight,
         maxWidth: maxWidth,
         marginLeft: "auto",
         marginRight: "auto",
