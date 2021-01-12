@@ -62,6 +62,7 @@ const GallerySection = (props: Props) => {
         marginRight: "auto",
         borderRadius: borderRadius,
         border: `1px solid ${theme.palette.secondary.main}`,
+        overflow: "hidden",
       },
       title: {
         fontFamily: "gabriola",

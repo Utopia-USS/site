@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     border: `1px solid ${theme.palette.secondary.main}`,
     textAlign: "center",
     height: "100%",
+    overflow: "hidden",
   },
   title: {
     fontFamily: "gabriola",
