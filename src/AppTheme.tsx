@@ -5,9 +5,12 @@ import React from "react";
 export const appThemeInstance = createMuiTheme({
   palette: {
     primary: {
-      light: "#bebed5ff",
-      main: "#50507c",
-      dark: "#27273dff",
+      // light: "#bebed5ff",
+      // main: "#50507c",
+      // dark: "#27273dff",
+      light: "#74a7cdff",
+      main: "#5367aaff",
+      dark: "#0e0a46ff",
     },
     secondary: {
       light: "#f0e9e0ff",
