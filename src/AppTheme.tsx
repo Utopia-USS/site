@@ -9,7 +9,7 @@ export const appThemeInstance = createMuiTheme({
       // main: "#50507c",
       // dark: "#27273dff",
       light: "#74a7cdff",
-      main: "#5367aaff",
+      main: "#15162cff",
       dark: "#0e0a46ff",
     },
     secondary: {

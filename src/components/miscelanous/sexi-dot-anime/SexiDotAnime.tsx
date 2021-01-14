@@ -35,7 +35,10 @@ const generateNodes = ({
 }: GenerateNodesParams): Node[] => {
   const area = height * width;
   const averageDotArea = mean(radiuses.map((r) => 3.14*r*r/2));
-  const nodeCount = Math.floor(area * coverage / averageDotArea);
+  const nodeCount = Math.min(
+    Math.floor(area * coverage / averageDotArea),
+    DotAnimeSettings.maxDotNumber,
+    );
   console.log(nodeCount);
   return range(nodeCount).map((i) => new Node(
     i,
@@ -116,6 +119,9 @@ const SexiDotAnime = (props: Props) => {
       const node = canvas.node();
       if(node) {
         const context = node.getContext('2d');
+        if(node.getClientRects().length === 0) {
+          return;
+        }
         const {width, height} = node.getClientRects()[0]
         if(context) {
           context.clearRect(0, 0, width, height);

@@ -81,8 +81,8 @@ const ContactSection = (props: Props) => {
         margin: theme.spacing(1),
         transition: "0.2s",
         "&:hover": {
-          borderColor: theme.palette.primary.dark,
-          color: theme.palette.primary.dark,
+          borderColor: theme.palette.primary.light,
+          color: theme.palette.primary.light,
         },
         "& > *": {
           display: "block",
@@ -105,9 +105,10 @@ const ContactSection = (props: Props) => {
         backgroundColor: "white"
       },
       button: {
+        pointerEvents: "auto",
         marginLeft: theme.spacing(3),
         "&:hover" : {
-          backgroundColor: theme.palette.primary.dark,
+          backgroundColor: theme.palette.primary.light,
         },
       },
     })
