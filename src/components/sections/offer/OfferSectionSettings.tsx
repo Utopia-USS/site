@@ -81,37 +81,37 @@ const offers: ReadonlyArray<Offer> = [
   {
     title: "consulting",
     description: "Let us split your requirements to particles and put together perfect solutions for them.",
-    image: SolEx,
+    image: "https://image.freepik.com/free-vector/business-seminar-staff-training-development-consultation-coaching-mentoring-cartoon-characters-listening-report-successful-businesswoman-concept-illustration_335657-2043.jpg",
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "design",
     description: "We design complete systems according to your guidelines and the industries best practices.",
-    image: SolEx,
+    image: "https://image.freepik.com/free-vector/business-idea-concept-with-people_52683-28609.jpg",
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "mobile",
     description: "Beautiful and user-friendly mobile apps that feel familiar right from the start.",
-    image: SolEx,
+    image: "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone-with-text-messages_74855-6531.jpg",
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "web",
     description: "Fast, tidy, purposeful and easy to navigate web apps.",
-    image: SolEx,
+    image: "https://image.freepik.com/free-vector/log-into-several-devices-responsive-app-design-wifi-zone-gadgets-online-communication-social-networking-web-connection-initialize-sign-up-vector-isolated-concept-metaphor-illustration_335657-1999.jpg",
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "microservices",
     description: "Flexible, scalable and extendable microservice-based architectures.",
-    image: SolEx,
+    image: "https://image.freepik.com/free-vector/characters-people-holding-blockchain-network_53876-26824.jpg",
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "cloud",
     description: "Integration with the cloud will help you minimize development and operational costs.",
-    image: SolEx,
+    image: "https://image.freepik.com/free-vector/cloud-services-isometric-composition-with-big-cloud-computing-infrastructure-elements-connected-with-dashed-lines-vector-illustration_1284-30495.jpg",
     imageAlt: "kto gra ten pije szampana",
   },
 ];
