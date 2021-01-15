@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/site/static/css/main.69a13779.chunk.css",
-    "main.js": "/site/static/js/main.e07ffec9.chunk.js",
-    "main.js.map": "/site/static/js/main.e07ffec9.chunk.js.map",
-    "runtime-main.js": "/site/static/js/runtime-main.02490ce5.js",
-    "runtime-main.js.map": "/site/static/js/runtime-main.02490ce5.js.map",
-    "static/js/2.f9a383ef.chunk.js": "/site/static/js/2.f9a383ef.chunk.js",
-    "static/js/2.f9a383ef.chunk.js.map": "/site/static/js/2.f9a383ef.chunk.js.map",
-    "static/js/3.68780ba6.chunk.js": "/site/static/js/3.68780ba6.chunk.js",
-    "static/js/3.68780ba6.chunk.js.map": "/site/static/js/3.68780ba6.chunk.js.map",
+    "main.js": "/site/static/js/main.ed8a89f1.chunk.js",
+    "main.js.map": "/site/static/js/main.ed8a89f1.chunk.js.map",
+    "runtime-main.js": "/site/static/js/runtime-main.eb06a443.js",
+    "runtime-main.js.map": "/site/static/js/runtime-main.eb06a443.js.map",
+    "static/js/2.4526771b.chunk.js": "/site/static/js/2.4526771b.chunk.js",
+    "static/js/2.4526771b.chunk.js.map": "/site/static/js/2.4526771b.chunk.js.map",
+    "static/js/3.34775ee3.chunk.js": "/site/static/js/3.34775ee3.chunk.js",
+    "static/js/3.34775ee3.chunk.js.map": "/site/static/js/3.34775ee3.chunk.js.map",
     "index.html": "/site/index.html",
     "static/css/main.69a13779.chunk.css.map": "/site/static/css/main.69a13779.chunk.css.map",
-    "static/js/2.f9a383ef.chunk.js.LICENSE.txt": "/site/static/js/2.f9a383ef.chunk.js.LICENSE.txt",
+    "static/js/2.4526771b.chunk.js.LICENSE.txt": "/site/static/js/2.4526771b.chunk.js.LICENSE.txt",
     "static/media/index.css": "/site/static/media/gabriola.88ea98ef.ttf",
     "static/media/android.52d70166.svg": "/site/static/media/android.52d70166.svg",
     "static/media/angular.7d3fc2b8.svg": "/site/static/media/angular.7d3fc2b8.svg",
@@ -26,15 +26,14 @@
     "static/media/react.5bddeb53.svg": "/site/static/media/react.5bddeb53.svg",
     "static/media/sift_ad.a8b96157.png": "/site/static/media/sift_ad.a8b96157.png",
     "static/media/smartvendor_ad.1370dc29.png": "/site/static/media/smartvendor_ad.1370dc29.png",
-    "static/media/solutions_example.eee4e50f.jpg": "/site/static/media/solutions_example.eee4e50f.jpg",
     "static/media/spring.983292e6.svg": "/site/static/media/spring.983292e6.svg",
     "static/media/typescript.f939d0a8.svg": "/site/static/media/typescript.f939d0a8.svg",
     "static/media/utopia_big.83593046.png": "/site/static/media/utopia_big.83593046.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.02490ce5.js",
-    "static/js/2.f9a383ef.chunk.js",
+    "static/js/runtime-main.eb06a443.js",
+    "static/js/2.4526771b.chunk.js",
     "static/css/main.69a13779.chunk.css",
-    "static/js/main.e07ffec9.chunk.js"
+    "static/js/main.ed8a89f1.chunk.js"
   ]
 }
