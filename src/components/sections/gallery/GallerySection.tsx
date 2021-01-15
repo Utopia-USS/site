@@ -39,7 +39,8 @@ const GallerySection = (props: Props) => {
   expected result. */
   const onItemChange: (itemNum: number) => void = (itemNum) => {
     const modulo = itemNum % numberOfItems;
-    const itemIndex = modulo >= 0 ? modulo : numberOfItems - modulo;
+    const itemIndex = modulo >= 0 ? modulo : numberOfItems + modulo;
+    console.log(itemIndex);
     setFadeIn(false);
     sleep(fadeTime).then((_) => {
       setGalleryItem(itemIndex);

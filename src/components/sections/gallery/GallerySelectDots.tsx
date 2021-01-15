@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import {range} from "lodash";
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 interface Props {
   dotNumber: number,
@@ -13,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "spaceBetween",
+    alignItems: "center",
   },
   dot: {
     height: 20,
@@ -29,6 +32,21 @@ const useStyles = makeStyles((theme) => ({
   checked: {
     backgroundColor: theme.palette.secondary.dark,
   },
+  arrow: {
+    height: 35,
+    width: 35,
+    margin: 10,
+    color: theme.palette.secondary.main,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    '& > *': {
+      display: "block",
+    },
+    '&:hover': {
+      color: theme.palette.secondary.dark,
+    },
+  },
 }));
 
 const GallerySelectDots = (props: Props) => {
@@ -37,6 +55,9 @@ const GallerySelectDots = (props: Props) => {
 
   return (
     <div className={classes.dotsBox}>
+      <div className={`${classes.arrow}`} onClick={(_) => onChecked(selected - 1)}>
+        <ArrowBackIosIcon color={'inherit'}/>
+      </div>
       {
         range(dotNumber)
         .map(e => 
@@ -45,6 +66,9 @@ const GallerySelectDots = (props: Props) => {
             : <div className={`${classes.dot} ${classes.notChecked}`} onClick={() => onChecked(e)}/>
         )
       }
+      <div className={`${classes.arrow}`} onClick={(_) => onChecked(selected + 1)}>
+        <ArrowForwardIosIcon color={'inherit'}/>
+      </div>
     </div>
   );
 };
