@@ -55,7 +55,7 @@ const GallerySection = (props: Props) => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: minHeight,
-        padding: theme.spacing(3),
+        padding: `0px ${theme.spacing(2)}px`,
       },
       textBox: {
         display: "flex",
@@ -80,7 +80,7 @@ const GallerySection = (props: Props) => {
           <Grid item xs={12} md={6}>
             <div className={classes.nonMediaBox}>
               <div className={classes.textBox}>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" color="textSecondary" align="justify" component="p">
                   {description}
                 </Typography>
               </div>

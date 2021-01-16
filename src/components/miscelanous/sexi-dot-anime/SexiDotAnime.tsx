@@ -6,7 +6,7 @@ import { mean, range } from "lodash";
 import DotAnimeSettings from "./DotAnimeSettings";
 
 interface Props {
-
+  className?: string,
 }
 
 class Node implements SimulationNodeDatum {
@@ -51,15 +51,15 @@ const generateNodes = ({
 
 const rootId = "sexiDotAnimeId";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    height: "100%",
-  },
-}));
-
 
 const SexiDotAnime = (props: Props) => { 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      width: "100%",
+      height: "100%",
+    },
+  }));
+
   const classes = useStyles();
   const root = useRef<HTMLCanvasElement>(null);
 
@@ -145,6 +145,7 @@ const SexiDotAnime = (props: Props) => {
     const current = root.current;
     if(current) {
       const {width, height} = current.getClientRects()[0];
+      console.log(height);
       current.width = width;
       current.height = height;
       return {width: width, height: height};
@@ -172,7 +173,11 @@ const SexiDotAnime = (props: Props) => {
   });
 
   return (
-    <canvas id={rootId} className={classes.root} ref={root}/>
+    <canvas 
+    id={rootId} 
+    className={`${classes.root} ${props.className ? props.className : ''}`} 
+    ref={root}
+    />
   )
 }
 

@@ -39,22 +39,22 @@ export default function NavBarView(props: Props) {
 
   const { vericalTranslatePx, height, maxHeight, onMobileMenuIconClicked, mobileMenuAnchorEl, onMobileMenuClose } = props;
 
-  console.log(height);
-
   const useStyles = makeStyles((theme) => ({
     grow: {
       flexGrow: 1
     },
     appBar: {
+      minHeight: height,
       transform: `translate3d(0,${vericalTranslatePx}px,0)`,
       overflowAnchor: "none",
       backgroundColor: "white",
       boxShadow: `inset 0 -2px 3px ${theme.palette.secondary.main}`,
     },
     toolbar: {
+      minHeight: height,
       height: height,
       padding: 0,
-      margin: 1,
+      margin:0,
     },
     distanceBar: {
       height: maxHeight,
@@ -96,6 +96,9 @@ export default function NavBarView(props: Props) {
     noPointerEvents : {
       pointerEvents: "none",
     },
+    anime: {
+      paddingBottom: 4,
+    }
   }));
 
   const classes = useStyles();
@@ -105,7 +108,7 @@ export default function NavBarView(props: Props) {
       <AppBar color="secondary" className={ `${classes.appBar}` } elevation={0} position="fixed">
         <Toolbar className={classes.toolbar}>
           <NavBarLayer zIndex={200} className={classes.flexCenterLayer}>
-            <SexiDotAnime/>
+            <SexiDotAnime className={classes.anime}/>
           </NavBarLayer>
           <NavBarLayer zIndex={201} className={`${classes.flexLayer} ${classes.noPointerEvents}`}>
             <div className={classes.logoBox}/>

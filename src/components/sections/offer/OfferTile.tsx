@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "gabriola",
     fontSize: "30px",
     textTransform: "lowercase",
+  },
+  noHover: {
+    pointerEvents: "none",
   }
 }));
 
@@ -36,7 +39,7 @@ const OfferTile : FC<Props> = (props) => {
   const classes = useStyles();
   return (
     <Card variant="outlined" className={classes.root}>
-      <CardActionArea>
+      <CardActionArea className={classes.noHover}>
         <CardMedia
           component="img"
           alt={imageAlt}

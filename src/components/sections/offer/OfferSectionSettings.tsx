@@ -1,15 +1,20 @@
-import SolEx from "../../../assets/img/solutions_example.jpg";
+import { FunctionComponent, SVGProps } from "react";
 import {ReactComponent as FlutterIco} from "../../../assets/tech_icons/flutter.svg";
 import {ReactComponent as ReactIco} from "../../../assets/tech_icons/react.svg";
 import {ReactComponent as AngularIco} from "../../../assets/tech_icons/angular.svg";
 import {ReactComponent as AndroidIco} from "../../../assets/tech_icons/android.svg";
 import {ReactComponent as TypescriptIco} from "../../../assets/tech_icons/typescript.svg";
 import {ReactComponent as SpringIco} from "../../../assets/tech_icons/spring.svg";
-import {ReactComponent as KtorIco} from "../../../assets/tech_icons/ktor.svg";
+import {ReactComponent as KotlinIco} from "../../../assets/tech_icons/kotlin.svg";
 import {ReactComponent as DotnetIco} from "../../../assets/tech_icons/dotnet.svg";
-import {ReactComponent as ExpressjsIco} from "../../../assets/tech_icons/expressjs.svg";
+import {ReactComponent as NodeIco} from "../../../assets/tech_icons/nodejs.svg";
 import {ReactComponent as DjangoIco} from "../../../assets/tech_icons/django.svg";
-import { FunctionComponent, ReactComponentElement, ReactSVGElement, SVGProps } from "react";
+import ConsultingImg from '../../../assets/img/consulting.png';
+import DesignImg from '../../../assets/img/design.png';
+import MobileImg from '../../../assets/img/mobile.png';
+import WebImg from '../../../assets/img/web.png';
+import MicroservicesImg from '../../../assets/img/microservices.png';
+import CloudImg from '../../../assets/img/cloud.png';
 
 interface Tech {
   icon: FunctionComponent<SVGProps<SVGSVGElement>>,
@@ -49,7 +54,7 @@ const techs: ReadonlyArray<Tech> = [
     description: "A well-established, feature rich framework for backends in Java or Kotlin language.",
   },
   {
-    icon: KtorIco,
+    icon: KotlinIco,
     name: "ktor",
     description: "A framework for building asynchronous servers and clients in connected systems using the Kotlin programming language.",
   },
@@ -59,7 +64,7 @@ const techs: ReadonlyArray<Tech> = [
     description: "A well-established, feature rich framework for building APIs in C# language.",
   },
   {
-    icon: ExpressjsIco,
+    icon: NodeIco,
     name: "express.js",
     description: "A performant web framework for Node.js allowing a high degree of development integration with javascript frontends.",
   },
@@ -81,37 +86,37 @@ const offers: ReadonlyArray<Offer> = [
   {
     title: "consulting",
     description: "Let us split your requirements to particles and put together perfect solutions for them.",
-    image: "https://image.freepik.com/free-vector/business-seminar-staff-training-development-consultation-coaching-mentoring-cartoon-characters-listening-report-successful-businesswoman-concept-illustration_335657-2043.jpg",
+    image: ConsultingImg,
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "design",
     description: "We design complete systems according to your guidelines and the industries best practices.",
-    image: "https://image.freepik.com/free-vector/business-idea-concept-with-people_52683-28609.jpg",
+    image: DesignImg,
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "mobile",
     description: "Beautiful and user-friendly mobile apps that feel familiar right from the start.",
-    image: "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone-with-text-messages_74855-6531.jpg",
+    image: MobileImg,
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "web",
     description: "Fast, tidy, purposeful and easy to navigate web apps.",
-    image: "https://image.freepik.com/free-vector/log-into-several-devices-responsive-app-design-wifi-zone-gadgets-online-communication-social-networking-web-connection-initialize-sign-up-vector-isolated-concept-metaphor-illustration_335657-1999.jpg",
+    image: WebImg,
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "microservices",
     description: "Flexible, scalable and extendable microservice-based architectures.",
-    image: "https://image.freepik.com/free-vector/characters-people-holding-blockchain-network_53876-26824.jpg",
+    image: MicroservicesImg,
     imageAlt: "kto gra ten pije szampana",
   },
   {
     title: "cloud",
     description: "Integration with the cloud will help you minimize development and operational costs.",
-    image: "https://image.freepik.com/free-vector/cloud-services-isometric-composition-with-big-cloud-computing-infrastructure-elements-connected-with-dashed-lines-vector-illustration_1284-30495.jpg",
+    image: CloudImg,
     imageAlt: "kto gra ten pije szampana",
   },
 ];
