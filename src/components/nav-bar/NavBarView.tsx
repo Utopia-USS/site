@@ -44,7 +44,6 @@ export default function NavBarView(props: Props) {
       flexGrow: 1
     },
     appBar: {
-      minHeight: height,
       transform: `translate3d(0,${vericalTranslatePx}px,0)`,
       overflowAnchor: "none",
       backgroundColor: "white",
