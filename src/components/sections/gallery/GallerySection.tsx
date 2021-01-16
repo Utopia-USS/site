@@ -124,6 +124,13 @@ const GallerySection = (props: Props) => {
 
   const classes = useStyles();
 
+  // preload images
+  useEffect(() => {
+    gallerySettings.items
+      .map((e) => e.media)
+      .map((e) => new Image().src = e);
+  }, []);
+
   return (
     <SectionBox sectionId="gallery-section">
       <GrowOnDisplayed>
