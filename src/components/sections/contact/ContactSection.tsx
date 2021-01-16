@@ -1,4 +1,4 @@
-import { Button, createStyles, makeStyles, TextField } from "@material-ui/core";
+import { Button, createStyles, makeStyles, TextField, Typography } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import TelegramIcon from '@material-ui/icons/Telegram';
@@ -117,7 +117,7 @@ const ContactSection = (props: Props) => {
             <div className={classes.imageBox}>
               <img src={image} alt={imageAlt}/>
             </div>
-            {description}
+            <Typography variant="body2" align="justify" color="textSecondary" component="p">{description}</Typography>
           </div>
           <div ref={element} className={classes.contactDetailsBox}>
             <a href={`mailto:${displayed ? email : "obfuscated"}`} className={classes.contactInfo}>
