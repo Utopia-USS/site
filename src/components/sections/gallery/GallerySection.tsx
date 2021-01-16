@@ -14,13 +14,6 @@ const minHeight = 450;
 const maxWidth = 900;
 const fadeTime = 300;
 const borderRadius = 10;
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
 
 const GallerySection = (props: Props) => {
     // Fade in / out
@@ -37,7 +30,6 @@ const GallerySection = (props: Props) => {
   const onItemChange: (itemNum: number) => void = (itemNum) => {
     const modulo = itemNum % numberOfItems;
     const itemIndex = modulo >= 0 ? modulo : numberOfItems + modulo;
-    console.log(itemIndex);
     setFadeIn(false);
     sleep(fadeTime).then((_) => {
       setGalleryItem(itemIndex);

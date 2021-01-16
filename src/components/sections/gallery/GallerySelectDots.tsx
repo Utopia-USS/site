@@ -62,8 +62,12 @@ const GallerySelectDots = (props: Props) => {
         range(dotNumber)
         .map(e => 
             e === selected 
-            ? <div className={`${classes.dot} ${classes.checked}`}></div>
-            : <div className={`${classes.dot} ${classes.notChecked}`} onClick={() => onChecked(e)}/>
+            ? <div className={`${classes.dot} ${classes.checked}`} key={"selectdot" + e}/>
+            : <div 
+            className={`${classes.dot} ${classes.notChecked}`} 
+            onClick={() => onChecked(e)} 
+            key={"selectdot" + e}
+            />
         )
       }
       <div className={`${classes.arrow}`} onClick={(_) => onChecked(selected + 1)}>

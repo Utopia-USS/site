@@ -38,7 +38,6 @@ const generateNodes = ({
     Math.floor(area * coverage / averageDotArea),
     DotAnimeSettings.maxDotNumber,
     );
-  console.log(nodeCount);
   return range(nodeCount).map((i) => new Node(
     i,
     randomFromRange(width),
@@ -144,7 +143,6 @@ const SexiDotAnime = (props: Props) => {
     const current = root.current;
     if(current) {
       const {width, height} = current.getClientRects()[0];
-      console.log(height);
       current.width = width;
       current.height = height;
       return {width: width, height: height};

@@ -149,6 +149,7 @@ const ContactSection = (props: Props) => {
                 type={e.type}
                 error={e.error}
                 className={classes.field}
+                key={"field" + e.name}
                 />)
               }
               <Button

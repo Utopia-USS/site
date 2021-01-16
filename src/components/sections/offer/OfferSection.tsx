@@ -15,7 +15,7 @@ const OfferSection = (props: Props) => {
       <Grid container spacing={3} justify="center" alignItems="stretch">
         {
           offerSectionSettings.offers.map((e) => 
-            <Grid item container justify="center" xs={12} sm={4}>
+            <Grid item container justify="center" xs={12} sm={4} key={e.title + "offer"}>
               <GrowOnDisplayed>
                 <OfferTile 
                 title={e.title} 

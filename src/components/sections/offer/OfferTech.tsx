@@ -80,7 +80,7 @@ const OfferTech = (props: Props) => {
             
         {
           techs.map((e) => 
-            <Grid item xs={3} sm={2} md={1} className={classes.gridItem}>
+            <Grid item xs={3} sm={2} md={1} className={classes.gridItem} key={e.name + "offertech"}>
               <HtmlTooltip
                 title={
                   <div>
