@@ -1,7 +1,7 @@
 import { Button, ButtonGroup, IconButton, makeStyles } from "@material-ui/core";
+import MoreIcon from "@material-ui/icons/MoreVert";
 import React from "react";
 import { navBarSettings } from "./NavBarSettings";
-import MoreIcon from "@material-ui/icons/MoreVert";
 
 interface Props {
   onMobileMenuIconClicked: (event: React.MouseEvent) => void,

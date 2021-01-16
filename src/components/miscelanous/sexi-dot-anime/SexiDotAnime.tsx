@@ -1,8 +1,7 @@
 import { makeStyles } from "@material-ui/core";
-import React, { useEffect, useRef, useState } from "react";
-import {color, forceCenter, forceCollide, forceManyBody, forceSimulation, forceX, forceY, pointer, scaleLinear, select, SimulationNodeDatum} from 'd3';
-import { appThemeInstance } from "../../../AppTheme";
+import { forceCollide, forceManyBody, forceSimulation, forceX, forceY, pointer, select, SimulationNodeDatum } from 'd3';
 import { mean, range } from "lodash";
+import React, { useEffect, useRef, useState } from "react";
 import DotAnimeSettings from "./DotAnimeSettings";
 
 interface Props {

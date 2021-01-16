@@ -1,7 +1,6 @@
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from "@material-ui/core";
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import React from "react";
-import { FC } from "react";
+import React, { FC } from "react";
 
 interface Props {
   title: string,

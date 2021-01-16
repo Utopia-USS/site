@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { getWindowDimensions } from "../../utils/getWindowDimensions";
 import sleep from "../../utils/sleep";
 import { navBarSettings } from "./NavBarSettings";
 import NavBarView from "./NavBarView";
-import _ from 'lodash';
-import { getWindowDimensions } from "../../utils/getWindowDimensions";
 
 interface Props {}
 

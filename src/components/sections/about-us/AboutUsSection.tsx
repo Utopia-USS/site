@@ -1,14 +1,9 @@
-import { Card, CardContent, CardMedia, createStyles, Fade, Grid, makeStyles, Typography } from "@material-ui/core";
+import { createStyles, Grid, makeStyles, Typography } from "@material-ui/core";
 import { min } from "lodash";
-import React, { useEffect, useState } from "react";
-import { getWindowDimensions } from "../../../utils/getWindowDimensions";
+import React from "react";
 import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
-import sleep from "../../../utils/sleep";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionTitle from "../SectionTitle";
-import offerSectionSettings from "../offer/OfferSectionSettings";
 import SectionBox from "../SectionBox";
-import { sectionsSettings } from "../SectionsSettings";
 import aboutUsSectionSettings from "./AboutUsSectionSettings";
 
 interface Props {}

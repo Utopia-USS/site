@@ -1,4 +1,3 @@
-import { orange } from "@material-ui/core/colors";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 

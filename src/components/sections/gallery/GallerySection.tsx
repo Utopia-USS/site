@@ -1,13 +1,10 @@
-import { Card, CardContent, CardMedia, createStyles, Fade, Grid, makeStyles, Typography } from "@material-ui/core";
-import { light } from "@material-ui/core/styles/createPalette";
+import { createStyles, Fade, Grid, makeStyles, Typography } from "@material-ui/core";
 import { min } from "lodash";
 import React, { useEffect, useState } from "react";
 import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import sleep from "../../../utils/sleep";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import offerSectionSettings from "../offer/OfferSectionSettings";
 import SectionBox from "../SectionBox";
-import { sectionsSettings } from "../SectionsSettings";
 import GallerySelectDots from "./GallerySelectDots";
 import gallerySettings from "./GallerySettings";
 

@@ -1,29 +1,14 @@
-import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { appThemeInstance } from '../../AppTheme';
 import { makeStyles } from '@material-ui/core/styles';
-import { navBarSettings } from './NavBarSettings';
-import { Box, ButtonGroup, Container } from '@material-ui/core';
+import Toolbar from '@material-ui/core/Toolbar';
+import React from 'react';
 import Logo from '../../assets/img/utopia_big.png';
-import LogoThin from '../../assets/img/utopia_thin.png';
-import LogoMobile from '../../assets/img/utopia_vertical.png';
-import Paper from '@material-ui/core/Paper/Paper';
-import { relative } from 'path';
-import IconButton from '@material-ui/core/IconButton/IconButton';
-import Badge from '@material-ui/core/Badge/Badge';
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Grid from '@material-ui/core/Grid/Grid';
-import Button from '@material-ui/core/Button/Button';
-import { FullscreenExit } from '@material-ui/icons';
-import NavBarMobileMenu from './NavBarMobileMenu';
 import SexiDotAnime from '../miscelanous/sexi-dot-anime/SexiDotAnime';
+import NavBarCenterColumn from './NavBarCenterColumn';
 import NavBarLayer from './NavBarLayer';
 import NavBarMenu from './NavBarMenu';
-import NavBarCenterColumn from './NavBarCenterColumn';
+import NavBarMobileMenu from './NavBarMobileMenu';
+import { navBarSettings } from './NavBarSettings';
 
 interface Props {
   //children?: React.ReactElement;

@@ -1,4 +1,4 @@
-import { createRef, MutableRefObject, RefObject, useRef } from "react"
+import { createRef, RefObject } from "react"
 
 export interface SectionProps {
   name: string,

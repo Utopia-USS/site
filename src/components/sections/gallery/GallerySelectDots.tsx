@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/core";
-import React from "react";
-import {range} from "lodash";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { range } from "lodash";
+import React from "react";
 
 interface Props {
   dotNumber: number,

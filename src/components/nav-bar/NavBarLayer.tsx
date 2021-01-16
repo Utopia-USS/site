@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core";
-import { render } from "@testing-library/react";
 import React, { FC } from "react";
 
 interface Props {

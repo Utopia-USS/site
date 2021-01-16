@@ -1,12 +1,7 @@
 import Grid from "@material-ui/core/Grid/Grid";
-import Paper from "@material-ui/core/Paper";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import React from "react";
-import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionTitle from "../SectionTitle";
 import SectionBox from "../SectionBox";
-import { sectionsSettings } from "../SectionsSettings";
 import offerSectionSettings from "./OfferSectionSettings";
 import OfferTech from "./OfferTech";
 import OfferTile from "./OfferTile";

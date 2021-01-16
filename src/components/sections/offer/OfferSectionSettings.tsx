@@ -1,20 +1,20 @@
 import { FunctionComponent, SVGProps } from "react";
-import {ReactComponent as FlutterIco} from "../../../assets/tech_icons/flutter.svg";
-import {ReactComponent as ReactIco} from "../../../assets/tech_icons/react.svg";
-import {ReactComponent as AngularIco} from "../../../assets/tech_icons/angular.svg";
-import {ReactComponent as AndroidIco} from "../../../assets/tech_icons/android.svg";
-import {ReactComponent as TypescriptIco} from "../../../assets/tech_icons/typescript.svg";
-import {ReactComponent as SpringIco} from "../../../assets/tech_icons/spring.svg";
-import {ReactComponent as KotlinIco} from "../../../assets/tech_icons/kotlin.svg";
-import {ReactComponent as DotnetIco} from "../../../assets/tech_icons/dotnet.svg";
-import {ReactComponent as NodeIco} from "../../../assets/tech_icons/nodejs.svg";
-import {ReactComponent as DjangoIco} from "../../../assets/tech_icons/django.svg";
+import CloudImg from '../../../assets/img/cloud.png';
 import ConsultingImg from '../../../assets/img/consulting.png';
 import DesignImg from '../../../assets/img/design.png';
+import MicroservicesImg from '../../../assets/img/microservices.png';
 import MobileImg from '../../../assets/img/mobile.png';
 import WebImg from '../../../assets/img/web.png';
-import MicroservicesImg from '../../../assets/img/microservices.png';
-import CloudImg from '../../../assets/img/cloud.png';
+import { ReactComponent as AndroidIco } from "../../../assets/tech_icons/android.svg";
+import { ReactComponent as AngularIco } from "../../../assets/tech_icons/angular.svg";
+import { ReactComponent as DjangoIco } from "../../../assets/tech_icons/django.svg";
+import { ReactComponent as DotnetIco } from "../../../assets/tech_icons/dotnet.svg";
+import { ReactComponent as FlutterIco } from "../../../assets/tech_icons/flutter.svg";
+import { ReactComponent as KotlinIco } from "../../../assets/tech_icons/kotlin.svg";
+import { ReactComponent as NodeIco } from "../../../assets/tech_icons/nodejs.svg";
+import { ReactComponent as ReactIco } from "../../../assets/tech_icons/react.svg";
+import { ReactComponent as SpringIco } from "../../../assets/tech_icons/spring.svg";
+import { ReactComponent as TypescriptIco } from "../../../assets/tech_icons/typescript.svg";
 
 interface Tech {
   icon: FunctionComponent<SVGProps<SVGSVGElement>>,

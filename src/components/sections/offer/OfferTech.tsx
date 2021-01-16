@@ -1,8 +1,7 @@
 import { Grid, makeStyles, Tooltip, Typography, withStyles } from "@material-ui/core";
-import React, { FC, FunctionComponent, SVGProps } from "react";
+import React, { FC } from "react";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import offerSectionSettings from "./OfferSectionSettings";
-import {ReactComponent as FlutterIco} from "../../../assets/tech_icons/flutter.svg";
 
 interface Props {}
 interface TechIconProps {}

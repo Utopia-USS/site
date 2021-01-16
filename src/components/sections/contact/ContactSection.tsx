@@ -1,21 +1,12 @@
-import { Button, Card, CardContent, CardMedia, createStyles, Fade, FilledInput, FormControl, FormHelperText, Grid, Icon, Input, InputLabel, makeStyles, OutlinedInput, TextField, Typography } from "@material-ui/core";
-import { min, throttle } from "lodash";
-import { stringify } from "querystring";
-import React, { RefObject, useEffect, useState } from "react";
-import { getWindowDimensions } from "../../../utils/getWindowDimensions";
-import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
-import sleep from "../../../utils/sleep";
-import validateEmail from "../../../utils/validateEmail";
-import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionTitle from "../SectionTitle";
-import offerSectionSettings from "../offer/OfferSectionSettings";
-import SectionBox from "../SectionBox";
-import { sectionsSettings } from "../SectionsSettings";
-import contactSettings from "./ContactSettings";
-import TelegramIcon from '@material-ui/icons/Telegram';
-import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
+import { Button, createStyles, makeStyles, TextField } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
+import TelegramIcon from '@material-ui/icons/Telegram';
+import React, { useState } from "react";
+import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
+import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
+import SectionBox from "../SectionBox";
+import contactSettings from "./ContactSettings";
 
 interface Props {}
 

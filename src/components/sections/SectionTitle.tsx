@@ -1,5 +1,4 @@
-import { Container, makeStyles, Typography } from "@material-ui/core";
-import { render } from "@testing-library/react";
+import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 
 interface Props {
