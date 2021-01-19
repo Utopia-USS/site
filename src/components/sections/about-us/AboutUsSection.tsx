@@ -1,7 +1,5 @@
 import { createStyles, Grid, makeStyles, Typography } from "@material-ui/core";
-import { min } from "lodash";
 import React from "react";
-import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import Translate from "../../miscelanous/Translate";
 import SectionBox from "../SectionBox";
@@ -14,10 +12,7 @@ const maxWidth = 900;
 
 const GallerySection = (props: Props) => {
 
-  const {image, description} = aboutUsSectionSettings;
-
-  // Updating window dimension info
-  const windowDimensions = useWindowDimensions();
+  const {image, imageAlt, description} = aboutUsSectionSettings;
 
   const useStyles = makeStyles((theme) =>
     createStyles({
@@ -36,14 +31,16 @@ const GallerySection = (props: Props) => {
         verticalAlign: "middle",
       },
       mediaBox: {
-        backgroundImage: `url("${image}")`,
-        backgroundSize: "contain",
+        display: "block",
+        // backgroundImage: `url("${image}")`,
+        // backgroundSize: "contain",
         //backgroundSize: "background-size: auto 100%",
         backgroundRepeat: 'no-repeat',
         flexGrow: 1,
         backgroundPosition: "center",
         height: "60vmin",
         maxHeight: 400,
+        margin: "auto",
         marginBottom: theme.spacing(2),
       },
       nonMediaBox: {
@@ -72,7 +69,11 @@ const GallerySection = (props: Props) => {
       <GrowOnDisplayed>
         <Grid container spacing={0} justify="center" alignItems="stretch" className={classes.galleryBox}>
           <Grid item xs={12} md={6}>
-            <div className={classes.mediaBox}/>
+              <img 
+              src={image} 
+              className={classes.mediaBox}
+              alt={imageAlt}
+              />
           </Grid>
           <Grid item xs={12} md={6}>
             <div className={classes.nonMediaBox}>

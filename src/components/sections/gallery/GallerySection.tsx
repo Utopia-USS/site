@@ -24,7 +24,7 @@ const GallerySection = (props: Props) => {
   const [galleryItem, setGalleryItem] = useState(0);
   const numberOfItems = gallerySettings.items.length;
   const item = gallerySettings.items[galleryItem];
-  const {title, description, media} = item;
+  const {title, description, media, imageAlt} = item;
     /*   Can take negative number or greater then items length, 
   so you can change by 1 in any direction and get the 
   expected result. */
@@ -66,9 +66,10 @@ const GallerySection = (props: Props) => {
         verticalAlign: "middle",
       },
       mediaBox: {
-        backgroundImage: `url("${media}")`,
-        backgroundSize: "contain",
-        backgroundRepeat: 'no-repeat',
+        // backgroundImage: `url("${media}")`,
+        // backgroundSize: "contain",
+        // backgroundRepeat: 'no-repeat',
+        display: "block",
         flexGrow: 1,
         backgroundPosition: "center",
         width: "100%",
@@ -144,7 +145,7 @@ const GallerySection = (props: Props) => {
             </Grid>
             <Grid item xs={12} md={7}>
               <Fade in={fadeIn} timeout={fadeTime}>
-                <div className={classes.mediaBox}/>
+                <img src={media} className={classes.mediaBox} alt={imageAlt}/>
               </Fade>
             </Grid>
           </Grid>

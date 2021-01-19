@@ -8,6 +8,7 @@ interface GalleryItem {
   title: string,
   description: Translatable,
   media: string,
+  imageAlt: string,
 }
 
 const items: ReadonlyArray<GalleryItem> = [
@@ -19,6 +20,7 @@ const items: ReadonlyArray<GalleryItem> = [
       de: "Eine Chat-App mit einzigartigen Funktionen und Medienunterstützung. Wir haben die Codebasis eines einfachen Chats ohne angemessenes Design übernommen, das mit vielen Funktionen, Animationen und einem hübschen Design ausgestattet ist, und sie für die Monetarisierung vorbereitet, einschließlich der Integration in zahlreiche Zahlungssysteme. Wir haben Flutter, TypeScript, Firebase (einschließlich Firestore, Functions und Auth) verwendet.",
     },
     media: BoChat,
+    imageAlt: "bochat screens",
   },
   {
     title: "Sift",
@@ -28,6 +30,7 @@ const items: ReadonlyArray<GalleryItem> = [
       de: "Eine innovative Dating-App, die leistungsstarken und intuitiven Chat mit fortgeschritten Matching-Algorithmen kombiniert. Wir haben die plattformübergreifende App mit einer tollen Benutzeroberfläche / UX sowie die serverseitigen Komponenten von Grund auf neu erstellt. Wir haben Flutter, Kotlin, Ktor, Neo4j, AWS verwendet.",
     },
     media: Sift,
+    imageAlt: "sift screens",
   },
   {
     title: "Ercoin",
@@ -37,6 +40,7 @@ const items: ReadonlyArray<GalleryItem> = [
       de: "Eine mobile Brieftaschenanwendung für die Ercoin-Kryptowährung. Die Android App integriert es in externe Blockchain APIs. Es wurde in Flutter geschrieben.",
     },
     media: Ercoin,
+    imageAlt: "ercoin screens",
   },
   {
     title: "Smart Vendor",
@@ -46,6 +50,7 @@ const items: ReadonlyArray<GalleryItem> = [
       de: "Ein umfassendes Instrument zum Organisieren und Optimieren der Arbeit von Händlern und Unternehmen, einschließlich fortgeschritten Matchmaking-Funktionen. Das System wird von mehr als 100 Unternehmen benutzt und ist in bestimmten Branchen in Mittel- und Osteuropa weit verbreitet. Wir haben Java, Play Framework, React, Typescript verwendet.",
     },
     media: SmartVendor,
+    imageAlt: "smart vendor screens",
   },
 ]
 

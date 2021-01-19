@@ -1,5 +1,5 @@
 import React from "react";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export type Lang = 'pl' | 'en' | 'de';
 export const allLangs: ReadonlyArray<Lang> = ['pl', 'en', 'de'];

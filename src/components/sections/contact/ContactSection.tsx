@@ -5,7 +5,7 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 import React, { useState } from "react";
 import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import Translate, { translate, useLang } from "../../miscelanous/Translate";
+import Translate, { useLang } from "../../miscelanous/Translate";
 import SectionBox from "../SectionBox";
 import contactSettings from "./ContactSettings";
 

@@ -3,6 +3,7 @@ import { Translatable } from "../../miscelanous/Translate";
 
 const aboutUsSectionSettings = {
   image: Us,
+  imageAlt: "Utopia Team members",
   description: {
     en: `
     We are a team of people joined by passion for technology and product creation.

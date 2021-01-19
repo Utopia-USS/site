@@ -1,8 +1,7 @@
 import { Button, ButtonGroup, IconButton, makeStyles } from "@material-ui/core";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import React, { FC, useState } from "react";
+import React from "react";
 import Translate, { useLang } from "../miscelanous/Translate";
-import LangMenu from "./LangMenu";
 import { navBarSettings } from "./NavBarSettings";
 
 interface Props {
