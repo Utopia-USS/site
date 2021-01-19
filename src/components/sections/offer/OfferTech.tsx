@@ -83,6 +83,8 @@ const OfferTech = (props: Props) => {
           techs.map((e) => 
             <Grid item xs={3} sm={2} md={1} className={classes.gridItem} key={e.name + "offertech"}>
               <HtmlTooltip
+                enterTouchDelay={10}
+                leaveTouchDelay={500}
                 title={
                   <div>
                     <Typography color="inherit">

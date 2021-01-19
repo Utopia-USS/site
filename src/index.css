@@ -20,9 +20,11 @@
   src: url("./assets/fonts/gabriola/gabriola.ttf");
 }
 
+/* 
+to z jakiegoś powodu niszczy scroll ba mobilkach
 html {
   scroll-behavior: smooth;
-}
+} */
 
 body {
   margin: 0;

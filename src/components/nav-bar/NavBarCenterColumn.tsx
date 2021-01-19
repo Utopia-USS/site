@@ -2,6 +2,7 @@ import { Button, makeStyles } from "@material-ui/core";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import React from "react";
 import hexToRGBa from "../../utils/hexToRgba";
+import { smoothScroll } from "../../utils/smoothScroll";
 import Translate from "../miscelanous/Translate";
 import { navBarSettings } from "./NavBarSettings";
 
@@ -36,6 +37,10 @@ const NavBarCenterColumn = (props: Props) => {
 
   const classes = useStyles();
 
+  const onItemClick = (item: HTMLElement | null | undefined) => {
+    if(item) smoothScroll(item);
+  }
+
   return (
     <div className={classes.root}>
       <div>
@@ -46,11 +51,12 @@ const NavBarCenterColumn = (props: Props) => {
       color="primary"
       className={classes.button}
       endIcon={<ArrowForwardIosIcon/>}
-      onClick={(_) => navBarSettings
+      onClick={(_) => onItemClick(
+        navBarSettings
         .menuItems()
         .find((e) => e.label.en.toLowerCase() === "contact" )
         ?.scrollToRef.current
-        ?.scrollIntoView()}
+      )}
       disableElevation
       >
       <Translate trans={{

@@ -1,6 +1,7 @@
 import { Button, ButtonGroup, IconButton, makeStyles } from "@material-ui/core";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import React from "react";
+import { smoothScroll } from "../../utils/smoothScroll";
 import Translate, { useLang } from "../miscelanous/Translate";
 import { navBarSettings } from "./NavBarSettings";
 
@@ -42,6 +43,10 @@ const NavBarMenu = (props: Props) => {
 
   const lang = useLang();
 
+  const onItemClick = (item: HTMLElement | null) => {
+    if(item) smoothScroll(item);
+  }
+
   return (
     <>
       <div className={`${classes.sectionDesktop} ${classes.buttonBox}`}>
@@ -58,7 +63,7 @@ const NavBarMenu = (props: Props) => {
           {navBarSettings.menuItems()
             .map((e) => (
               <Button
-                onClick={(_) => e.scrollToRef.current?.scrollIntoView()}
+                onClick={(_) => onItemClick(e.scrollToRef.current)}
                 className={classes.menuItem}
                 key={e.label.en}>
                 <Translate trans={e.label}/>
