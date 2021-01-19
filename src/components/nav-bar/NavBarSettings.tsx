@@ -1,8 +1,9 @@
 import { RefObject } from "react";
+import { Translatable } from "../miscelanous/Translate";
 import { sectionsSettings } from "../sections/SectionsSettings";
 
 interface MenuItem{
-  label: string,
+  label: Translatable,
   scrollToRef: RefObject<HTMLElement>,
 }
 
@@ -26,6 +27,7 @@ export const navBarSettings = {
   delayMs: 0,
   logoBreakpoint: 200,
   mobileMenuId: "nav-bar-menu-mobile",
+  languageMenuId: "nav-bar-menu-language",
   menuItems: menuItems,
   centerColumnFadeOutPath: 200,
 }

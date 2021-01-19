@@ -2,6 +2,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import React from 'react';
+import Translate from '../miscelanous/Translate';
 import { navBarSettings } from './NavBarSettings';
 
 interface Props {
@@ -42,8 +43,10 @@ const NavBarMobileMenu = (props: Props) => {
             <MenuItem 
             onClick={(_) => onItemClick(e.scrollToRef.current)}
             className={classes.menuItem} 
-            key={e.label}>
-              <p>{e.label}</p>
+            key={e.label.en}>
+              <p>
+                <Translate trans={e.label}/>
+              </p>
             </MenuItem>
           ))
         }

@@ -1,10 +1,11 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import React, { FC } from "react";
+import Translate, { Translatable } from "../../miscelanous/Translate";
 
 interface Props {
-  title: string,
-  description: string,
+  title: Translatable,
+  description: Translatable,
   image: string,
   imageAlt: string
 };
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: "gabriola",
     fontSize: "30px",
-    textTransform: "lowercase",
+   // textTransform: "lowercase",
   },
   noHover: {
     pointerEvents: "none",
@@ -47,10 +48,10 @@ const OfferTile : FC<Props> = (props) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
-            {title}
+            <Translate trans={title}/>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {description}
+            <Translate trans={description}/>
           </Typography>
         </CardContent>
       </CardActionArea>

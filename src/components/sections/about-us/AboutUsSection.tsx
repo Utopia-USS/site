@@ -3,6 +3,7 @@ import { min } from "lodash";
 import React from "react";
 import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
+import Translate from "../../miscelanous/Translate";
 import SectionBox from "../SectionBox";
 import aboutUsSectionSettings from "./AboutUsSectionSettings";
 
@@ -41,22 +42,23 @@ const GallerySection = (props: Props) => {
         backgroundRepeat: 'no-repeat',
         flexGrow: 1,
         backgroundPosition: "center",
-        width: "100%",
-        minHeight: min([minHeight, 0.9 * windowDimensions.width * minHeight / (maxWidth * 0.5)]),
+        height: "60vmin",
+        maxHeight: 400,
+        marginBottom: theme.spacing(2),
       },
       nonMediaBox: {
         flexDirection: "column",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "start",
+        alignItems: "start",
         minHeight: minHeight,
         padding: `0px ${theme.spacing(2)}px`,
       },
       textBox: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "start",
+        alignItems: "start",
         height: "100%",
         flexGrow: 1,
       },
@@ -76,7 +78,7 @@ const GallerySection = (props: Props) => {
             <div className={classes.nonMediaBox}>
               <div className={classes.textBox}>
                 <Typography variant="body2" color="textSecondary" align="justify" component="p">
-                  {description}
+                  <Translate trans={description}/>
                 </Typography>
               </div>
             </div>

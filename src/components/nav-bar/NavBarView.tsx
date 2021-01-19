@@ -4,6 +4,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
 import Logo from '../../assets/img/utopia_big.png';
 import SexiDotAnime from '../miscelanous/sexi-dot-anime/SexiDotAnime';
+import { Lang } from '../miscelanous/Translate';
+import LangMenu from './LangMenu';
 import NavBarCenterColumn from './NavBarCenterColumn';
 import NavBarLayer from './NavBarLayer';
 import NavBarMenu from './NavBarMenu';
@@ -18,11 +20,26 @@ interface Props {
   onMobileMenuIconClicked: (event: React.MouseEvent) => void;
   mobileMenuAnchorEl?: Element;
   onMobileMenuClose: () => void;
+  onLangButtonClicked: (event: React.MouseEvent) => void;
+  langMenuAnchorEl?: Element;
+  onLangMenuClose: () => void;
+  lang: Lang;
 }
 
 export default function NavBarView(props: Props) {
 
-  const { vericalTranslatePx, height, maxHeight, onMobileMenuIconClicked, mobileMenuAnchorEl, onMobileMenuClose } = props;
+  const { 
+    vericalTranslatePx, 
+    height, 
+    maxHeight, 
+    onMobileMenuIconClicked, 
+    mobileMenuAnchorEl, 
+    onMobileMenuClose,
+    onLangButtonClicked,
+    langMenuAnchorEl,
+    onLangMenuClose,
+    lang,
+   } = props;
 
   const useStyles = makeStyles((theme) => ({
     grow: {
@@ -49,6 +66,7 @@ export default function NavBarView(props: Props) {
       //maxWidth: 300,
       height: Math.min(navBarSettings.minBarLogoRatio * height, navBarSettings.logoMaxHeight(maxHeight)),
       marginLeft: theme.spacing(3),
+      marginRight: 120,
       position: "relative",
       top: navBarSettings.minHeightPx * (1 - navBarSettings.minBarLogoRatio) / 2,
       backgroundImage: `url(${Logo})`,
@@ -98,7 +116,10 @@ export default function NavBarView(props: Props) {
             <div className={classes.logoBox}/>
           </NavBarLayer>
           <NavBarLayer zIndex={202} className={`${classes.flexRightColumnLayer} ${classes.noPointerEvents}`}>
-            <NavBarMenu onMobileMenuIconClicked={onMobileMenuIconClicked}/>
+            <NavBarMenu 
+            onMobileMenuIconClicked={onMobileMenuIconClicked} 
+            onLangButtonClicked={onLangButtonClicked}
+            />
           </NavBarLayer>
           <NavBarLayer zIndex={203} className={`${classes.flexCenterLayer} ${classes.noPointerEvents}`}>
             <NavBarCenterColumn height={height} heightMax={maxHeight}/>
@@ -108,6 +129,11 @@ export default function NavBarView(props: Props) {
       <div className={ `${classes.appBar}` }></div>
       <Toolbar className={classes.distanceBar}/>
       <NavBarMobileMenu onClose={onMobileMenuClose} mobileMenuAnchorEl={mobileMenuAnchorEl} />
+      <LangMenu 
+      onClose={onLangMenuClose} 
+      langMenuAnchorEl={langMenuAnchorEl} 
+      lang={lang}
+      />
     </React.Fragment>
   );
 }

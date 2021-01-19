@@ -5,6 +5,7 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 import React, { useState } from "react";
 import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
+import Translate, { translate, useLang } from "../../miscelanous/Translate";
 import SectionBox from "../SectionBox";
 import contactSettings from "./ContactSettings";
 
@@ -13,6 +14,8 @@ interface Props {}
 const ContactSection = (props: Props) => {
 
   const [fields, setFormValues] = useState(contactSettings.form);
+
+  const lang = useLang();
 
   // obfuscating contact info
   const [displayed, element] = useHasBeenDisplayed<HTMLDivElement>(0, 0);
@@ -117,7 +120,9 @@ const ContactSection = (props: Props) => {
             <div className={classes.imageBox}>
               <img src={image} alt={imageAlt}/>
             </div>
-            <Typography variant="body2" align="justify" color="textSecondary" component="p">{description}</Typography>
+            <Typography variant="body2" align="justify" color="textSecondary" component="p">
+              <Translate trans={description}/>
+            </Typography>
           </div>
           <div ref={element} className={classes.contactDetailsBox}>
             <a href={`mailto:${displayed ? email : "obfuscated"}`} className={classes.contactInfo}>
@@ -140,7 +145,7 @@ const ContactSection = (props: Props) => {
                 variant="outlined"
                 id={`${e.name}`}
                 required={e.required}
-                label={e.label}
+                label={e.label[lang]}
                 value={e.value}
                 autoComplete={e.autoComplete}
                 onChange={(c) => onValueChange(c.target.value, i, e.validation)}
@@ -159,7 +164,11 @@ const ContactSection = (props: Props) => {
               endIcon={<TelegramIcon/>}
               disableElevation
               >
-              Send
+                <Translate trans={{
+                  en: "Send",
+                  pl: "Wyślij",
+                  de: "Senden",
+                }}/>
               </Button>
             </form>
           </div>

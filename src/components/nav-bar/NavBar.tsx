@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getWindowDimensions } from "../../utils/getWindowDimensions";
 import sleep from "../../utils/sleep";
+import { useLang } from "../miscelanous/Translate";
 import { navBarSettings } from "./NavBarSettings";
 import NavBarView from "./NavBarView";
 
@@ -11,6 +12,7 @@ interface State {
   vericalTranslatePx: number;
   heightPx: number;
   mobileMenuAnchorEl?: Element;
+  langMenuAnchorEl?: Element;
   maxHeight: number;
 };
 
@@ -47,11 +49,21 @@ export function NavBar(props: Props) {
     return () => window.removeEventListener("resize", handleResize);
   });
 
+  const lang = useLang();
+
   const onMobileMenuIconClicked = (event: React.MouseEvent) => 
     setState({...state, mobileMenuAnchorEl: event.target as Element});
 
   const onMobileMenuClosed = () =>
     setState({...state, mobileMenuAnchorEl: undefined});
+
+  const onLangButtonClicked = (event: React.MouseEvent) => 
+    setState({...state, langMenuAnchorEl: event.target as Element});
+
+  const onLangMenuClosed = () =>{
+    console.log(state);
+    setState({...state, langMenuAnchorEl: undefined});
+}
 
   const {vericalTranslatePx, heightPx, maxHeight} = state;
   return (
@@ -62,6 +74,10 @@ export function NavBar(props: Props) {
     onMobileMenuIconClicked={onMobileMenuIconClicked}
     mobileMenuAnchorEl={state.mobileMenuAnchorEl}
     onMobileMenuClose={onMobileMenuClosed}
+    onLangButtonClicked={onLangButtonClicked}
+    langMenuAnchorEl={state.langMenuAnchorEl}
+    onLangMenuClose={onLangMenuClosed}
+    lang={lang}
     />
   );
   

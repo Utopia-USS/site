@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
 import sleep from "../../../utils/sleep";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
+import Translate from "../../miscelanous/Translate";
 import SectionBox from "../SectionBox";
 import GallerySelectDots from "./GallerySelectDots";
 import gallerySettings from "./GallerySettings";
@@ -61,7 +62,7 @@ const GallerySection = (props: Props) => {
       title: {
         fontFamily: "gabriola",
         fontSize: "30px",
-        textTransform: "lowercase",
+        //textTransform: "lowercase",
         verticalAlign: "middle",
       },
       mediaBox: {
@@ -132,7 +133,7 @@ const GallerySection = (props: Props) => {
                       {title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                      {description}
+                      <Translate trans={description}/>
                     </Typography>
                   </div>
                 </Fade>

@@ -1,8 +1,9 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
+import Translate, { Translatable } from "../miscelanous/Translate";
 
 interface Props {
-  title: string,
+  title: Translatable,
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +26,9 @@ const SectionTitle = (props: Props) => {
 
   return (
     <div className={classes.titleContainer}>
-      <Typography variant={"h5"} className={classes.title}>{ props.title }</Typography>
+      <Typography variant={"h5"} className={classes.title}>
+        <Translate trans={props.title}/>
+      </Typography>
     </div>
   )
 }

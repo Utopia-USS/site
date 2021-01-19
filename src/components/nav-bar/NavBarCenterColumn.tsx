@@ -2,6 +2,7 @@ import { Button, makeStyles } from "@material-ui/core";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import React from "react";
 import hexToRGBa from "../../utils/hexToRgba";
+import Translate from "../miscelanous/Translate";
 import { navBarSettings } from "./NavBarSettings";
 
 interface Props {
@@ -37,7 +38,9 @@ const NavBarCenterColumn = (props: Props) => {
 
   return (
     <div className={classes.root}>
-      <div>Your Ultimate Software Provider</div>
+      <div>
+        Your Ultimate Software Provider
+      </div>
       <Button
       variant="contained"
       color="primary"
@@ -45,12 +48,16 @@ const NavBarCenterColumn = (props: Props) => {
       endIcon={<ArrowForwardIosIcon/>}
       onClick={(_) => navBarSettings
         .menuItems()
-        .find((e) => e.label.toLowerCase() === "contact" )
+        .find((e) => e.label.en.toLowerCase() === "contact" )
         ?.scrollToRef.current
         ?.scrollIntoView()}
       disableElevation
       >
-      Contact us
+      <Translate trans={{
+        en: "Contact us",
+        pl: "Skontakuj się",
+        de: "Kontaktiere uns",
+      }}/>
       </Button>
     </div>
   )

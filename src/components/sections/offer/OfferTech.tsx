@@ -1,6 +1,7 @@
 import { Grid, makeStyles, Tooltip, Typography, withStyles } from "@material-ui/core";
 import React, { FC } from "react";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
+import Translate from "../../miscelanous/Translate";
 import offerSectionSettings from "./OfferSectionSettings";
 
 interface Props {}
@@ -84,8 +85,10 @@ const OfferTech = (props: Props) => {
               <HtmlTooltip
                 title={
                   <div>
-                    <Typography color="inherit">{e.name}</Typography>
-                    {e.description}
+                    <Typography color="inherit">
+                      {e.name}
+                    </Typography>
+                    <Translate trans={e.description}/>
                   </div>
                 }
               >
