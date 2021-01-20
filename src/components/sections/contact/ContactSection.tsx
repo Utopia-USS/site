@@ -113,7 +113,7 @@ const ContactSection = (props: Props) => {
 
   const {image, imageAlt, email, phone, description} = contactSettings.contactPerson;
 
-  const send = () => axios.post('/user', {
+  const send = () => axios.post('/contact.php', {
     name: 'Fred',
     surename: 'Flintstone',
     email: 'freddyflinstone@malpa.lp',
