@@ -2,6 +2,13 @@ import validateEmail from "../../../utils/validateEmail";
 import ContactPerson from "../../../assets/img/contact_person.jpg";
 import { Translatable } from "../../miscelanous/Translate";
 
+export interface ContactScriptFields {
+  email: string,
+  name: string,
+  surename: string,
+  message: string,
+}
+
 interface UtopianField {
   name: string,
   required: boolean,
@@ -26,7 +33,7 @@ const form: ReadonlyArray<UtopianField> = [
     },
     value: "",
     autoComplete: "given-name",
-    validation: (val: string) => true,
+    validation: (val?: string) => true,
     multiline: false,
     type: "text",
   },
@@ -40,7 +47,7 @@ const form: ReadonlyArray<UtopianField> = [
     },
     value: "",
     autoComplete: "family-name",
-    validation: (val: string) => true,
+    validation: (val?: string) => true,
     multiline: false,
     type: "text",
   },
@@ -54,7 +61,7 @@ const form: ReadonlyArray<UtopianField> = [
     },
     value: "",
     autoComplete: "email",
-    validation: (val: string) => validateEmail(val),
+    validation: (val?: string) => val != null && validateEmail(val),
     multiline: false,
     type: "email",
   },
@@ -68,7 +75,7 @@ const form: ReadonlyArray<UtopianField> = [
     },
     value: "",
     autoComplete: "tel",
-    validation: (val: string) => true,
+    validation: (val?: string) => true,
     multiline: false,
     type: "tel",
   },
@@ -81,7 +88,7 @@ const form: ReadonlyArray<UtopianField> = [
       de: "Was können wir für Dich tun?",
     },
     value: "",
-    validation: (val: string) => val.trim().length > 0,
+    validation: (val?: string) => val != null && val.trim().length > 0,
     multiline: true,
     numOfRows: 4,
     type: "text",
@@ -90,6 +97,7 @@ const form: ReadonlyArray<UtopianField> = [
 
 const contactSettings = {
   form: form,
+  contactScript: '/contact.php',
   contactPerson: {
     image: ContactPerson,
     imageAlt: "contact person",

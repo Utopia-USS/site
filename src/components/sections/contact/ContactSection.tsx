@@ -1,4 +1,4 @@
-import { Button, createStyles, makeStyles, TextField, Typography } from "@material-ui/core";
+import { Button, createStyles, makeStyles, Snackbar, TextField, Typography } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import TelegramIcon from '@material-ui/icons/Telegram';
@@ -8,13 +8,28 @@ import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import Translate, { useLang } from "../../miscelanous/Translate";
 import SectionBox from "../SectionBox";
-import contactSettings from "./ContactSettings";
+import contactSettings, { ContactScriptFields } from "./ContactSettings";
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+
+function Alert(props: AlertProps) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 interface Props {}
+
+enum SendState {
+  not_send,
+  sending,
+  success,
+  error,
+}
 
 const ContactSection = (props: Props) => {
 
   const [fields, setFormValues] = useState(contactSettings.form);
+  const [sendState, setSendState] = useState(SendState.not_send);
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
 
   const lang = useLang();
 
@@ -31,6 +46,42 @@ const ContactSection = (props: Props) => {
         ...fields.slice(index + 1, fields.length)
       ]);
     }
+  
+  const send = () => {
+    // validate form fields
+    const validated = fields.map((e) => {return {...e, error: !e.validation(e.value)}});
+    // if any issues, set validated form fields and return
+    if(validated.filter((e) => e.error).length > 0) {
+      setFormValues(validated);
+    } else {
+      setSendState(SendState.sending);
+
+      const fieldVal = (fieldName: string) => 
+        fields.filter((e) => e.name === fieldName)[0].value;
+
+      const content: ContactScriptFields = {
+        name: fieldVal("name"),
+        surename: fieldVal("surename"),
+        email: fieldVal("email"),
+        message: `Telefon: ${fieldVal("phone")}\n${fieldVal("message")}`,
+      }
+      axios.post(contactSettings.contactScript, content)
+      .then(function (response) {
+        console.log(response);
+        if((response.data as string).includes("Message has been sent successfully")) {
+          setSendState(SendState.success);
+        } else {
+          setSendState(SendState.error);
+        }
+      })
+      .catch(function (error) {
+        setSendState(SendState.error);
+      })
+      .finally(() => {
+        setSnackBarOpen(true);
+      });
+    }
+  }
 
   const useStyles = makeStyles((theme) =>
     createStyles({
@@ -106,25 +157,15 @@ const ContactSection = (props: Props) => {
           backgroundColor: theme.palette.primary.light,
         },
       },
+      buttonSending: {
+        backgroundColor: theme.palette.primary.light,
+      },
     })
   );
 
   const classes = useStyles();
 
   const {image, imageAlt, email, phone, description} = contactSettings.contactPerson;
-
-  const send = () => axios.post('/contact.php', {
-    name: 'Fred',
-    surename: 'Flintstone',
-    email: 'freddyflinstone@malpa.lp',
-    message: 'moja duda jest mojasza'
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
 
   return (
     <SectionBox sectionId="contact-section">
@@ -174,8 +215,8 @@ const ContactSection = (props: Props) => {
               <Button
               variant="contained"
               color="primary"
-              className={classes.button}
-              endIcon={<TelegramIcon/>}
+              className={`${classes.button} ${sendState === SendState.sending ? classes.buttonSending : ''}`}
+              endIcon={sendState === SendState.sending ? <HourglassEmptyIcon/> : <TelegramIcon/>}
               disableElevation
               onClick={send}
               >
@@ -189,6 +230,30 @@ const ContactSection = (props: Props) => {
           </div>
         </GrowOnDisplayed>
       </div>
+      <Snackbar 
+      open={snackBarOpen} 
+      autoHideDuration={SendState.error ? 10000: 3000} 
+      onClose={() => setSnackBarOpen(false)}
+      >
+        <Alert 
+        onClose={() => setSnackBarOpen(false)} 
+        severity={SendState.error ? "error" : "success"}
+        >
+          {
+          SendState.error 
+          ? <Translate trans={{
+            en: "There was an issue with sending the message...",
+            pl: "Nie udało się wysłać wiadomości.",
+            de: "Beim Senden der Nachricht ist ein Problem aufgetreten...",
+          }}/> 
+          : <Translate trans={{
+            en: "The message was sent successfully.",
+            pl: "Wiadomość została wysłana.",
+            de: "Die Nachricht wurde erfolgreich gesendet.",
+          }}/> 
+          }
+        </Alert>
+      </Snackbar>
     </SectionBox>
   );
 };
