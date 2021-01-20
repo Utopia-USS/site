@@ -2,6 +2,7 @@ import { Button, createStyles, makeStyles, TextField, Typography } from "@materi
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import TelegramIcon from '@material-ui/icons/Telegram';
+import axios from "axios";
 import React, { useState } from "react";
 import useHasBeenDisplayed from "../../../utils/hooks/useHasBeenDisplayed";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
@@ -112,6 +113,19 @@ const ContactSection = (props: Props) => {
 
   const {image, imageAlt, email, phone, description} = contactSettings.contactPerson;
 
+  const send = () => axios.post('/user', {
+    name: 'Fred',
+    surename: 'Flintstone',
+    email: 'freddyflinstone@malpa.lp',
+    message: 'moja duda jest mojasza'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
   return (
     <SectionBox sectionId="contact-section">
       <div className={classes.root}>
@@ -163,6 +177,7 @@ const ContactSection = (props: Props) => {
               className={classes.button}
               endIcon={<TelegramIcon/>}
               disableElevation
+              onClick={send}
               >
                 <Translate trans={{
                   en: "Send",

@@ -12,7 +12,7 @@ npm install eslint-plugin-react-hooks --save-dev
 npm install --save jss-plugin-nested
 npm install d3 --save
 npm i --save @types/d3
-npm install xstream --save
+npm install axios --save
 
 - Github pages
 npm run deploy
