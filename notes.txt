@@ -13,6 +13,7 @@ npm install --save jss-plugin-nested
 npm install d3 --save
 npm i --save @types/d3
 npm install axios --save
+npm install @material-ui/lab
 
 - Github pages
 npm run deploy
