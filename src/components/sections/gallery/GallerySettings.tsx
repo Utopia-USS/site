@@ -1,4 +1,4 @@
-import BoChat from "../../../assets/img/bochat_ad.png";
+import BoChat from "../../../assets/img/bocha_ad.png";
 import Sift from "../../../assets/img/sift_ad.png";
 import Ercoin from "../../../assets/img/ercoin_ad.png"
 import SmartVendor from "../../../assets/img/smartvendor_ad.png"
