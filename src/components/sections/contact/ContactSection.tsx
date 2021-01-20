@@ -67,7 +67,9 @@ const ContactSection = (props: Props) => {
       }
       axios.post(contactSettings.contactScript, content)
       .then(function (response) {
-        console.log(response);
+        const data = response.data as string;
+        console.log(data);
+        console.log(data.includes("Message has been sent successfully"));
         if((response.data as string).includes("Message has been sent successfully")) {
           setSendState(SendState.success);
         } else {
