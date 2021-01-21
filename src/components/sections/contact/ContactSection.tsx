@@ -68,8 +68,10 @@ const ContactSection = (props: Props) => {
       axios.post(contactSettings.contactScript, content)
       .then(function (response) {
         const data = response.data as string;
-        if(data.includes("Message has been sent successfully")) {
+        if(data.includes(contactSettings.contactScriptExpectedOutput)) {
           setSendState(SendState.success);
+          const clearedFields = fields.map((e) => {return {...e, value: ''}});
+          setFormValues(clearedFields);
         } else {
           setSendState(SendState.error);
         }
@@ -232,7 +234,7 @@ const ContactSection = (props: Props) => {
       </div>
       <Snackbar 
       open={snackBarOpen} 
-      autoHideDuration={SendState.error ? 10000: 3000} 
+      autoHideDuration={sendState === SendState.error ? 10000: 3000} 
       onClose={() => setSnackBarOpen(false)}
       >
         <Alert 

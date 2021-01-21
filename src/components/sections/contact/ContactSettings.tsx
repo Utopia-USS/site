@@ -98,6 +98,7 @@ const form: ReadonlyArray<UtopianField> = [
 const contactSettings = {
   form: form,
   contactScript: '/contact.php',
+  contactScriptExpectedOutput: "Message has been sent successfully",
   contactPerson: {
     image: ContactPerson,
     imageAlt: "contact person",
