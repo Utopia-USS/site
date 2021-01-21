@@ -61,7 +61,6 @@ export function NavBar(props: Props) {
     setState({...state, langMenuAnchorEl: event.target as Element});
 
   const onLangMenuClosed = () =>{
-    console.log(state);
     setState({...state, langMenuAnchorEl: undefined});
 }
 

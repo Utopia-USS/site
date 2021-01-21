@@ -68,9 +68,7 @@ const ContactSection = (props: Props) => {
       axios.post(contactSettings.contactScript, content)
       .then(function (response) {
         const data = response.data as string;
-        console.log(data);
-        console.log(data.includes("Message has been sent successfully"));
-        if((response.data as string).includes("Message has been sent successfully")) {
+        if(data.includes("Message has been sent successfully")) {
           setSendState(SendState.success);
         } else {
           setSendState(SendState.error);
@@ -239,10 +237,10 @@ const ContactSection = (props: Props) => {
       >
         <Alert 
         onClose={() => setSnackBarOpen(false)} 
-        severity={SendState.error ? "error" : "success"}
+        severity={sendState === SendState.error ? "error" : "success"}
         >
           {
-          SendState.error 
+          sendState === SendState.error 
           ? <Translate trans={{
             en: "There was an issue with sending the message...",
             pl: "Nie udało się wysłać wiadomości.",
