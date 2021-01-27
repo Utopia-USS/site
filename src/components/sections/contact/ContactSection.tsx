@@ -1,4 +1,4 @@
-import { Button, createStyles, makeStyles, Snackbar, TextField, Typography } from "@material-ui/core";
+import { Button, Checkbox, createStyles, FormControlLabel, makeStyles, Snackbar, TextField, Typography } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import TelegramIcon from '@material-ui/icons/Telegram';
@@ -37,9 +37,11 @@ const ContactSection = (props: Props) => {
   const [displayed, element] = useHasBeenDisplayed<HTMLDivElement>(0, 0);
 
   const onValueChange = (
-    val: string, index: number, validator: (val: string) => boolean) => {
+    val: any, index: number, validator: (val: any) => boolean) => {
       const field = fields[index];
-      const newField = {...field, value: String(val), error: !field.validation(val)};
+      const newField = {...field, value: val, error: !field.validation(val)};
+      console.log(newField);
+      console.log(!field.validation(val))
       setFormValues([
         ...fields.slice(0, index), 
         newField, 
@@ -147,7 +149,8 @@ const ContactSection = (props: Props) => {
         maxWidth: 500,
       },
       field: {
-        margin: theme.spacing(3),
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
         display: "block",
         width: "100%",
         backgroundColor: "white"
@@ -155,12 +158,25 @@ const ContactSection = (props: Props) => {
       button: {
         pointerEvents: "auto",
         marginLeft: theme.spacing(3),
+        marginTop: theme.spacing(3),
         "&:hover" : {
           backgroundColor: theme.palette.primary.light,
         },
       },
       buttonSending: {
         backgroundColor: theme.palette.primary.light,
+      },
+      checkbox: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+      },
+      checkboxError: {
+        color: "red",
+        borderColor: "red",
+        "& *": {
+          color: "red",
+          borderColor: "red",
+        }
       },
     })
   );
@@ -193,11 +209,30 @@ const ContactSection = (props: Props) => {
           </div>
         </GrowOnDisplayed>
         <GrowOnDisplayed>
-          <div style={{margin: 50}}>
+          <div>
             <form className={classes.form} noValidate autoComplete="off">
               {
                 fields.map((e, i) => 
-                <TextField
+                e.isCheckbox
+                ? <FormControlLabel
+                  key={"field" + e.name}
+                  className={`${classes.checkbox} ${e.error ? classes.checkboxError : ''}`}
+                  control={
+                    <Checkbox
+                      required={e.required}
+                      checked={e.value}
+                      onChange={(c) => onValueChange(c.target.checked, i, e.validation)}
+                      name={e.name}
+                      color="primary"
+                    />
+                  }
+                  label={
+                    <Typography variant="body2" align="justify" color="textSecondary" component="p">
+                      <Translate trans={e.label}/>{e.required ? ' *' : ''}
+                    </Typography>
+                  }
+                />
+                : <TextField
                 fullWidth
                 variant="outlined"
                 id={`${e.name}`}

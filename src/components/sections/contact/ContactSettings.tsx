@@ -20,6 +20,7 @@ interface UtopianField {
   numOfRows?: number,
   type: string,
   error?: boolean,
+  isCheckbox?: boolean,
 }
 
 const form: ReadonlyArray<UtopianField> = [
@@ -92,6 +93,20 @@ const form: ReadonlyArray<UtopianField> = [
     multiline: true,
     numOfRows: 4,
     type: "text",
+  },
+  {
+    name: 'consent',
+    required: true,
+    label: {
+      en: "I am consent to processing of my personal data by Utopia Ultimate Software Solutions Sp. z o.o. in the scope provided in the above form in order to reply to my message.",
+      pl: "Wyrażam zgodę na przetwarzanie moich danych osobowych przez Utopia Ultimate Software Solutions Sp. Z o.o. w zakresie wskazanym w powyższym formularzu w celu udzielenia odpowiedzi na moją wiadomość.",
+      de: "Ich bin damit einverstanden, dass meine persönliche Daten von Utopia Ultimate Software Solutions Sp. z o.o. in dem im obigen Formular angegebenen Umfang verarbeitet werden, um auf meine Nachricht zu antworten.",
+    },
+    value: false,
+    validation: (val?: boolean) => Boolean(val),
+    multiline: false,
+    type: "",
+    isCheckbox: true,
   },
 ]
 
