@@ -40,8 +40,6 @@ const ContactSection = (props: Props) => {
     val: any, index: number, validator: (val: any) => boolean) => {
       const field = fields[index];
       const newField = {...field, value: val, error: !field.validation(val)};
-      console.log(newField);
-      console.log(!field.validation(val))
       setFormValues([
         ...fields.slice(0, index), 
         newField, 
