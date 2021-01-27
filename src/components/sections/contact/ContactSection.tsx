@@ -67,6 +67,7 @@ const ContactSection = (props: Props) => {
       }
       axios.post(contactSettings.contactScript, content)
       .then(function (response) {
+        console.log(response);
         const data = response.data as string;
         if(data.includes(contactSettings.contactScriptExpectedOutput)) {
           setSendState(SendState.success);
@@ -77,6 +78,7 @@ const ContactSection = (props: Props) => {
         }
       })
       .catch(function (error) {
+        console.log(error);
         setSendState(SendState.error);
       })
       .finally(() => {
