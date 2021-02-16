@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 import { getWindowDimensions } from "../../utils/getWindowDimensions";
 import sleep from "../../utils/sleep";
 import { useLang } from "../miscelanous/Translate";
@@ -18,14 +19,17 @@ interface State {
 
 export function NavBar(props: Props) {
 
+  const getMaxHeight = () => getWindowDimensions().height;
+
   const [state, setState] = useState<State>({
     previousOffset: 0,
     vericalTranslatePx: 0,
-    heightPx: getWindowDimensions().height,
-    maxHeight: getWindowDimensions().height,
+    heightPx: getMaxHeight(),
+    maxHeight: getMaxHeight(),
   });
 
   const handleScroll = () => {
+    if(isMobile) return;
     const offset = document.documentElement.scrollTop;
     const newState = onScrollOffset(offset, state);
     const setstate = (): void => setState(newState);
@@ -39,7 +43,7 @@ export function NavBar(props: Props) {
   });
 
   const handleResize = () => {
-    const updatedState = {...state, maxHeight: getWindowDimensions().height};
+    const updatedState = {...state, maxHeight: getMaxHeight()};
     const recalculatedState = onScrollOffset(updatedState.previousOffset, updatedState);
     setState(recalculatedState);
   }
@@ -67,9 +71,10 @@ export function NavBar(props: Props) {
   const {vericalTranslatePx, heightPx, maxHeight} = state;
   return (
     <NavBarView 
-    vericalTranslatePx={vericalTranslatePx} 
-    height={heightPx}
+    vericalTranslatePx={isMobile ? 0 : vericalTranslatePx} 
+    height={isMobile ? navBarSettings.mobileHeight : heightPx}
     maxHeight={maxHeight}
+    distanceBarHeight={isMobile ? navBarSettings.mobileHeight : maxHeight}
     onMobileMenuIconClicked={onMobileMenuIconClicked}
     mobileMenuAnchorEl={state.mobileMenuAnchorEl}
     onMobileMenuClose={onMobileMenuClosed}

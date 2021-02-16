@@ -14,6 +14,7 @@ npm install d3 --save
 npm i --save @types/d3
 npm install axios --save
 npm install @material-ui/lab
+npm install react-device-detect --save
 
 - Github pages
 npm run deploy

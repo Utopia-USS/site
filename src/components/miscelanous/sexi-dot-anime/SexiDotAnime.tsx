@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { debounce, makeStyles } from "@material-ui/core";
 import { forceCollide, forceManyBody, forceSimulation, forceX, forceY, pointer, select, SimulationNodeDatum } from 'd3';
 import { mean, range } from "lodash";
 import React, { useEffect, useRef, useState } from "react";
@@ -53,8 +53,9 @@ const rootId = "sexiDotAnimeId";
 const SexiDotAnime = (props: Props) => { 
   const useStyles = makeStyles((theme) => ({
     root: {
-      width: "100%",
-      height: "100%",
+      width: "100vw",
+      height: "100vh",
+      display: "inline"
     },
   }));
 
@@ -159,15 +160,17 @@ const SexiDotAnime = (props: Props) => {
     }
   }, [isSimulation]);
 
-  useEffect(() => {
-    window.addEventListener("resize", sizeCanvas);
-    return () => window.removeEventListener("resize", sizeCanvas);
-  });
+  const throttledSizeCanvas = useRef(debounce(sizeCanvas, 100)).current;
 
   useEffect(() => {
-    window.addEventListener("scroll", sizeCanvas);
-    return () => window.removeEventListener("scroll", sizeCanvas);
+    window.addEventListener("resize", throttledSizeCanvas);
+    return () => window.removeEventListener("resize", throttledSizeCanvas);
   });
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", throttledSizeCanvas);
+  //   return () => window.removeEventListener("scroll", sizeCanvas);
+  // });
 
   return (
     <canvas 

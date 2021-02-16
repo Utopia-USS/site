@@ -19,6 +19,7 @@ const menuItems = () : MenuItem[] =>
 
 export const navBarSettings = {
   minHeightPx: 60,
+  mobileHeight: 80,
   minBarLogoRatio: 0.7,
   logoMaxHeight(maxBarHeight: number) {
     return Math.min(0.2 * maxBarHeight, 400)

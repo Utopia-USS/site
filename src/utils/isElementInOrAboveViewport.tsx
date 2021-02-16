@@ -1,4 +1,4 @@
-export default function isElementVisible(
+export default function isElementInOrAboveViewport(
   ref: React.RefObject<Element>, 
   offset: number = 0
   ): boolean {
@@ -8,6 +8,6 @@ export default function isElementVisible(
   } else {
     const top = current.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
-    return top < windowHeight - offset && top - offset > 0;
+    return top < windowHeight - offset;// && top - offset > 0;
   }
 }

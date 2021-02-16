@@ -1,6 +1,6 @@
 import { createRef, useEffect, useState } from "react";
 import _ from "lodash";
-import isElementVisible from "../isElementVisible";
+import isElementInOrAboveViewport from "../isElementInOrAboveViewport";
 
 /**
  * Check if an element is in viewport
@@ -22,14 +22,14 @@ export default function useHasBeenDisplayed<Element extends HTMLElement>(
       return;
     }
     setWasVisible(
-      isElementVisible(currentElement, offset) || wasVisible
+      isElementInOrAboveViewport(currentElement, offset) || wasVisible
     );
   }, throttleMilliseconds);
 
   // If element is in viewport on mount, make it visible
   useEffect(() => {
     setWasVisible(
-      isElementVisible(currentElement, offset) || wasVisible
+      isElementInOrAboveViewport(currentElement, offset) || wasVisible
     );
   }, []);
 

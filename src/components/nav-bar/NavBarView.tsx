@@ -24,6 +24,7 @@ interface Props {
   langMenuAnchorEl?: Element;
   onLangMenuClose: () => void;
   lang: Lang;
+  distanceBarHeight: number;
 }
 
 export default function NavBarView(props: Props) {
@@ -39,6 +40,7 @@ export default function NavBarView(props: Props) {
     langMenuAnchorEl,
     onLangMenuClose,
     lang,
+    distanceBarHeight,
    } = props;
 
   const useStyles = makeStyles((theme) => ({
@@ -58,7 +60,7 @@ export default function NavBarView(props: Props) {
       margin:0,
     },
     distanceBar: {
-      height: maxHeight,
+      height: distanceBarHeight,
     },
     logoBox: {
       //alignSelf: "center",
@@ -87,6 +89,7 @@ export default function NavBarView(props: Props) {
       flexDirection: "row",
       justifyContent: "space-evenly",
       alignItems: "center", /* align vertical */
+      overflow: "hidden",
     },
     flexRightColumnLayer: {
       height: "100%",
@@ -98,9 +101,6 @@ export default function NavBarView(props: Props) {
     noPointerEvents : {
       pointerEvents: "none",
     },
-    anime: {
-      paddingBottom: 4,
-    }
   }));
 
   const classes = useStyles();
@@ -110,7 +110,7 @@ export default function NavBarView(props: Props) {
       <AppBar color="secondary" className={ `${classes.appBar}` } elevation={0} position="fixed">
         <Toolbar className={classes.toolbar}>
           <NavBarLayer zIndex={200} className={classes.flexCenterLayer}>
-            <SexiDotAnime className={classes.anime}/>
+            <SexiDotAnime/>
           </NavBarLayer>
           <NavBarLayer zIndex={201} className={`${classes.flexLayer} ${classes.noPointerEvents}`}>
             <div className={classes.logoBox}/>
