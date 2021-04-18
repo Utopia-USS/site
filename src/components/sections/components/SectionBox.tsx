@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import React, { FC } from "react";
 import SectionTitle from "./SectionTitle";
-import { sectionsSettings } from "./SectionsSettings";
+import { sectionsSettings } from "../SectionsSettings";
 
 interface Props {
   sectionId: string,

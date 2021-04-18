@@ -1,9 +1,9 @@
 import { Button, ButtonGroup, IconButton, makeStyles } from "@material-ui/core";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import React from "react";
-import { smoothScroll } from "../../utils/smoothScroll";
-import Translate, { useLang } from "../miscelanous/Translate";
-import { navBarSettings } from "./NavBarSettings";
+import { smoothScroll } from "../../../utils/smoothScroll";
+import Translate, { useLang } from "../../miscelanous/Translate";
+import { navBarSettings } from "../NavBarSettings";
 
 interface Props {
   onMobileMenuIconClicked: (event: React.MouseEvent) => void,

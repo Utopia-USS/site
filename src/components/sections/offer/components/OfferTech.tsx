@@ -1,8 +1,8 @@
 import { Grid, makeStyles, Tooltip, Typography, withStyles } from "@material-ui/core";
 import React, { FC } from "react";
-import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import Translate from "../../miscelanous/Translate";
-import offerSectionSettings from "./OfferSectionSettings";
+import GrowOnDisplayed from "../../../miscelanous/GrowOnDisplayed";
+import Translate from "../../../miscelanous/Translate";
+import offerSectionSettings from "../OfferSectionSettings";
 
 interface Props {}
 interface TechIconProps {}

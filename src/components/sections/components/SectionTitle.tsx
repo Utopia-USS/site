@@ -1,6 +1,6 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import Translate, { Translatable } from "../miscelanous/Translate";
+import Translate, { Translatable } from "../../miscelanous/Translate";
 
 interface Props {
   title: Translatable,

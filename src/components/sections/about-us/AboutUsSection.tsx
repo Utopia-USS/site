@@ -2,7 +2,7 @@ import { createStyles, Grid, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import Translate from "../../miscelanous/Translate";
-import SectionBox from "../SectionBox";
+import SectionBox from "../components/SectionBox";
 import aboutUsSectionSettings from "./AboutUsSectionSettings";
 
 interface Props {}
@@ -10,7 +10,7 @@ interface Props {}
 const minHeight = 450;
 const maxWidth = 900;
 
-const GallerySection = (props: Props) => {
+const AboutUsSection = (props: Props) => {
 
   const {image, imageAlt, description} = aboutUsSectionSettings;
 
@@ -64,23 +64,45 @@ const GallerySection = (props: Props) => {
 
   const classes = useStyles();
 
+  const AboutUsImage = () => {
+    return (
+      <img 
+      src={image} 
+      className={classes.mediaBox}
+      alt={imageAlt}
+      />
+    )
+  }
+
+  const AboutUsDescription = () => {
+    return (
+      <Typography 
+      variant="body2" 
+      color="textSecondary" 
+      align="justify" 
+      component="p"
+      >
+        <Translate trans={description}/>
+      </Typography>
+    )
+  }
+
   return (
     <SectionBox sectionId="about-us-section">
       <GrowOnDisplayed>
-        <Grid container spacing={0} justify="center" alignItems="stretch" className={classes.galleryBox}>
+        <Grid 
+        container spacing={0} 
+        justify="center" 
+        alignItems="stretch" 
+        className={classes.galleryBox}
+        >
           <Grid item xs={12} md={6}>
-              <img 
-              src={image} 
-              className={classes.mediaBox}
-              alt={imageAlt}
-              />
+              <AboutUsImage/>
           </Grid>
           <Grid item xs={12} md={6}>
             <div className={classes.nonMediaBox}>
               <div className={classes.textBox}>
-                <Typography variant="body2" color="textSecondary" align="justify" component="p">
-                  <Translate trans={description}/>
-                </Typography>
+                <AboutUsDescription/>
               </div>
             </div>
           </Grid>
@@ -90,4 +112,4 @@ const GallerySection = (props: Props) => {
   );
 };
 
-export default GallerySection;
+export default AboutUsSection;

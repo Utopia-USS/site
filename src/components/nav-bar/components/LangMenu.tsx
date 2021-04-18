@@ -2,8 +2,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import React from 'react';
-import { allLangs, changeLanguage, Lang } from '../miscelanous/Translate';
-import { navBarSettings } from './NavBarSettings';
+import { allLangs, changeLanguage, Lang } from '../../miscelanous/Translate';
+import { navBarSettings } from '../NavBarSettings';
 
 interface Props {
   langMenuAnchorEl?: Element;

@@ -56,6 +56,11 @@ const items: ReadonlyArray<GalleryItem> = [
 
 const gallerySettings = {
   items: items,
+  minHeight: 450,
+  maxWidth: 900,
+  fadeTime: 300,
+  borderRadius: 10,
+
 }
 
 export default gallerySettings;

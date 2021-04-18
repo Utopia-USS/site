@@ -2,15 +2,15 @@ import AppBar from '@material-ui/core/AppBar';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
-import Logo from '../../assets/img/utopia_big.png';
-import SexiDotAnime from '../miscelanous/sexi-dot-anime/SexiDotAnime';
-import { Lang } from '../miscelanous/Translate';
+import Logo from '../../../assets/img/utopia_big.png';
+import SexiDotAnime from '../../miscelanous/sexi-dot-anime/SexiDotAnime';
+import { Lang } from '../../miscelanous/Translate';
 import LangMenu from './LangMenu';
 import NavBarCenterColumn from './NavBarCenterColumn';
 import NavBarLayer from './NavBarLayer';
 import NavBarMenu from './NavBarMenu';
 import NavBarMobileMenu from './NavBarMobileMenu';
-import { navBarSettings } from './NavBarSettings';
+import { navBarSettings } from '../NavBarSettings';
 
 interface Props {
   //children?: React.ReactElement;
@@ -66,7 +66,10 @@ export default function NavBarView(props: Props) {
       //alignSelf: "center",
       width:  "75%",
       //maxWidth: 300,
-      height: Math.min(navBarSettings.minBarLogoRatio * height, navBarSettings.logoMaxHeight(maxHeight)),
+      height: Math.min(
+        navBarSettings.minBarLogoRatio * height, 
+        navBarSettings.logoMaxHeight(maxHeight),
+        ),
       marginLeft: theme.spacing(3),
       marginRight: 120,
       position: "relative",

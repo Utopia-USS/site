@@ -9,7 +9,7 @@ export interface ContactScriptFields {
   message: string,
 }
 
-interface UtopianField {
+export interface UtopianField {
   name: string,
   required: boolean,
   label: Translatable,

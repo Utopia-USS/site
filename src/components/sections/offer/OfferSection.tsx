@@ -1,10 +1,10 @@
 import Grid from "@material-ui/core/Grid/Grid";
 import React from "react";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
-import SectionBox from "../SectionBox";
+import SectionBox from "../components/SectionBox";
 import offerSectionSettings from "./OfferSectionSettings";
-import OfferTech from "./OfferTech";
-import OfferTile from "./OfferTile";
+import OfferTech from "./components/OfferTech";
+import OfferTile from "./components/OfferTile";
 
 interface Props {}
 

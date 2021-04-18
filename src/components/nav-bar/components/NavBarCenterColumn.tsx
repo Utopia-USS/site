@@ -1,10 +1,10 @@
 import { Button, makeStyles } from "@material-ui/core";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import React from "react";
-import hexToRGBa from "../../utils/hexToRgba";
-import { smoothScroll } from "../../utils/smoothScroll";
-import Translate from "../miscelanous/Translate";
-import { navBarSettings } from "./NavBarSettings";
+import hexToRGBa from "../../../utils/hexToRgba";
+import { smoothScroll } from "../../../utils/smoothScroll";
+import Translate from "../../miscelanous/Translate";
+import { navBarSettings } from "../NavBarSettings";
 
 interface Props {
   height: number,

@@ -1,45 +1,39 @@
 import { createStyles, Fade, Grid, makeStyles, Typography } from "@material-ui/core";
 import { min } from "lodash";
-import React, { useEffect, useState } from "react";
-import useWindowDimensions from "../../../utils/hooks/useWindowDimensions";
-import sleep from "../../../utils/sleep";
+import React from "react";
 import GrowOnDisplayed from "../../miscelanous/GrowOnDisplayed";
 import Translate from "../../miscelanous/Translate";
-import SectionBox from "../SectionBox";
-import GallerySelectDots from "./GallerySelectDots";
+import SectionBox from "../components/SectionBox";
+import GallerySelectDots from "./components/GallerySelectDots";
 import gallerySettings from "./GallerySettings";
+import useGallerySection from "./hooks/useGallerySection";
 
 interface Props {}
 
-const minHeight = 450;
-const maxWidth = 900;
-const fadeTime = 300;
-const borderRadius = 10;
-
 const GallerySection = (props: Props) => {
-    // Fade in / out
-    const [fadeIn, setFadeIn] = useState(true);
 
-  // Gallery item selection
-  const [galleryItem, setGalleryItem] = useState(0);
-  const numberOfItems = gallerySettings.items.length;
-  const item = gallerySettings.items[galleryItem];
-  const {title, description, media, imageAlt} = item;
-    /*   Can take negative number or greater then items length, 
-  so you can change by 1 in any direction and get the 
-  expected result. */
-  const onItemChange: (itemNum: number) => void = (itemNum) => {
-    const modulo = itemNum % numberOfItems;
-    const itemIndex = modulo >= 0 ? modulo : numberOfItems + modulo;
-    setFadeIn(false);
-    sleep(fadeTime).then((_) => {
-      setGalleryItem(itemIndex);
-      setFadeIn(true);
-    });
-  }
+  const {
+    minHeight, 
+    maxWidth, 
+    borderRadius, 
+    fadeTime,
+  } = gallerySettings;
 
-  // Updating window dimension info
-  const windowDimensions = useWindowDimensions();
+  const {
+    windowDimensions, 
+    fadeIn, 
+    numberOfItems, 
+    galleryItem, 
+    item, 
+    onItemChange,
+  } = useGallerySection();
+
+  const {
+    title, 
+    description, 
+    media, 
+    imageAlt,
+  } = item;
 
   const useStyles = makeStyles((theme) =>
     createStyles({
@@ -73,7 +67,10 @@ const GallerySection = (props: Props) => {
         flexGrow: 1,
         backgroundPosition: "center",
         width: "100%",
-        minHeight: min([minHeight, 0.9 * windowDimensions.width * minHeight / (maxWidth * 7/12)]),
+        minHeight: min([
+          minHeight, 
+          0.9 * windowDimensions.width * minHeight / (maxWidth * 7/12)
+        ]),
         borderRadius: `0 ${borderRadius}px ${borderRadius}px 0`,
         [theme.breakpoints.down("sm")]: {
           borderRadius: `0 0 ${borderRadius}px ${borderRadius}px`,
@@ -115,17 +112,16 @@ const GallerySection = (props: Props) => {
 
   const classes = useStyles();
 
-  // preload images
-  useEffect(() => {
-    gallerySettings.items
-      .map((e) => e.media)
-      .map((e) => new Image().src = e);
-  }, []);
-
   return (
     <SectionBox sectionId="gallery-section">
       <GrowOnDisplayed>
-          <Grid container spacing={0} justify="center" alignItems="stretch" className={classes.galleryBox}>
+          <Grid 
+          container 
+          spacing={0} 
+          justify="center" 
+          alignItems="stretch" 
+          className={classes.galleryBox}
+          >
             <Grid item xs={12} md={5}>
               <div className={classes.nonMediaBox}>
                 <Fade in={fadeIn} timeout={fadeTime}>
@@ -139,7 +135,11 @@ const GallerySection = (props: Props) => {
                   </div>
                 </Fade>
                 <div className={classes.stepperBoxMobile}>
-                  <GallerySelectDots dotNumber={numberOfItems} selected={galleryItem} onChecked={onItemChange}/>
+                  <GallerySelectDots 
+                  dotNumber={numberOfItems} 
+                  selected={galleryItem} 
+                  onChecked={onItemChange}
+                  />
                 </div>
               </div>
             </Grid>
@@ -150,7 +150,11 @@ const GallerySection = (props: Props) => {
             </Grid>
           </Grid>
           <div className={classes.stepperBoxDesktop}>
-            <GallerySelectDots dotNumber={numberOfItems} selected={galleryItem} onChecked={onItemChange}/>
+            <GallerySelectDots 
+            dotNumber={numberOfItems} 
+            selected={galleryItem} 
+            onChecked={onItemChange}
+            />
           </div>
       </GrowOnDisplayed>
     </SectionBox>

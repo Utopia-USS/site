@@ -1,7 +1,7 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import React, { FC } from "react";
-import Translate, { Translatable } from "../../miscelanous/Translate";
+import Translate, { Translatable } from "../../../miscelanous/Translate";
 
 interface Props {
   title: Translatable,
